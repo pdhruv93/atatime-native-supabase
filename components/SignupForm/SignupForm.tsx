@@ -8,6 +8,7 @@ import {
   FormControlErrorText,
   FormControlErrorIcon,
 } from "@/components/ui/form-control";
+import { AlertCircleIcon } from "@/components/ui/icon";
 
 export function SignupForm() {
   const { errors, handleSubmit, onFormSubmit, register } = useSignup();
@@ -25,7 +26,7 @@ export function SignupForm() {
         </Input>
 
         <FormControlError>
-          <FormControlErrorIcon />
+          <FormControlErrorIcon as={AlertCircleIcon} />
 
           <FormControlErrorText>
             {errors.displayName && errors.displayName.message}
@@ -39,7 +40,7 @@ export function SignupForm() {
         </Input>
 
         <FormControlError>
-          <FormControlErrorIcon />
+          <FormControlErrorIcon as={AlertCircleIcon} />
 
           <FormControlErrorText>
             {errors.email && errors.email.message}
