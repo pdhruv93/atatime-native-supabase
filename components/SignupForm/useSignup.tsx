@@ -25,9 +25,16 @@ export function useSignup() {
     const redirectTo = makeRedirectUri();
 
     const { error } = await supabase.auth.signInWithOtp({
-      email: "valid.email@supabase.io",
+      email: data.email,
       options: {
         emailRedirectTo: redirectTo,
+        data: {
+          first_name: "Dhruv",
+          last_name: "Pandey",
+          bio: "",
+          age: undefined,
+          profile_url: undefined,
+        },
       },
     });
 
