@@ -9,13 +9,15 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.atatime"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.atatime"
     },
     "web": {
       "bundler": "metro",
@@ -28,15 +30,16 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
+          "resizeMode": "cover",
           "backgroundColor": "#E23744"
         }
       ],
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Montserrat-Regular.ttf"]
+          "fonts": [
+            "./assets/fonts/Montserrat-Regular.ttf"
+          ]
         }
       ]
     ],
