@@ -6,6 +6,7 @@ export function useSignup() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<FormInputs>({
     resolver: zodResolver(formSchema),
@@ -20,5 +21,5 @@ export function useSignup() {
     // send data for signup
   };
 
-  return { register, errors, handleSubmit, onFormSubmit };
+  return { register, errors, handleSubmit, onFormSubmit, control };
 }
