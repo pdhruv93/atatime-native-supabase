@@ -1,7 +1,6 @@
 import { VStack } from "@/components/ui/vstack";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Input, InputField } from "@/components/ui/input";
-import { Text } from "@/components/ui/text";
 import { useSignup } from "./useSignup";
 import {
   FormControl,
@@ -13,7 +12,7 @@ import { AlertCircleIcon } from "@/components/ui/icon";
 import { Controller } from "react-hook-form";
 
 export function SignupForm() {
-  const { errors, handleSubmit, onFormSubmit, register, control } = useSignup();
+  const { errors, handleSubmit, onFormSubmit, control } = useSignup();
 
   return (
     <VStack space="lg" className="w-full">
