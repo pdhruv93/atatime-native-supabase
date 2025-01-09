@@ -1,15 +1,24 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { FormInputs, formSchema } from "./formSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export function useSignup() {
   const {
-    control,
+    register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormInputs>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      displayName: "",
+      email: "",
+    },
+  });
 
-  const onSubmit = (data) => {
-    console.log("Submitted Data:", data);
+  const onFormSubmit: SubmitHandler<FormInputs> = (data) => {
+    console.log(data);
+    // send data for signup
   };
 
-  return { control, errors, handleSubmit, onSubmit };
+  return { register, errors, handleSubmit, onFormSubmit };
 }

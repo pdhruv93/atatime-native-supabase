@@ -28,7 +28,7 @@ export default function RootLayout() {
 
   return (
     <GluestackUIProvider mode="light">
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, paddingHorizontal: 20 }}>
         <Stack screenOptions={{ headerShown: false }} />
       </SafeAreaView>
 

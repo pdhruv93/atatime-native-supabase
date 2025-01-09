@@ -1,32 +1,52 @@
 import { VStack } from "@/components/ui/vstack";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Input, InputField } from "@/components/ui/input";
-import { Text } from "@/components/ui/text";
-import { Controller } from "react-hook-form";
 import { useSignup } from "./useSignup";
+import {
+  FormControl,
+  FormControlError,
+  FormControlErrorText,
+  FormControlErrorIcon,
+} from "@/components/ui/form-control";
 
 export function SignupForm() {
-  const { control, errors, handleSubmit, onSubmit } = useSignup();
+  const { errors, handleSubmit, onFormSubmit, register } = useSignup();
 
   return (
-    <VStack>
-      <Controller
-        control={control}
-        render={({ field }) => (
-          <Input {...field} isInvalid={!!errors.name}>
-            <InputField placeholder="Your name" />
-          </Input>
-        )}
-        name="name"
-        rules={{ required: "You must enter your name" }}
-      />
-      {errors.name && <Text>{errors.name.message}</Text>}
+    <VStack className="w-full">
+      <FormControl isInvalid={!!errors.displayName}>
+        <Input {...register("displayName")} isInvalid={!!errors.displayName}>
+          <InputField placeholder="Your name" />
+        </Input>
+
+        <FormControlError>
+          <FormControlErrorIcon />
+
+          <FormControlErrorText>
+            {errors.displayName && errors.displayName.message}
+          </FormControlErrorText>
+        </FormControlError>
+      </FormControl>
+
+      <FormControl isInvalid={!!errors.email}>
+        <Input {...register("email")} isInvalid={!!errors.email}>
+          <InputField placeholder="Email" />
+        </Input>
+
+        <FormControlError>
+          <FormControlErrorIcon />
+
+          <FormControlErrorText>
+            {errors.email && errors.email.message}
+          </FormControlErrorText>
+        </FormControlError>
+      </FormControl>
 
       <Button
         size="md"
         variant="solid"
         action="primary"
-        onPress={handleSubmit(onSubmit)}
+        onPress={handleSubmit(onFormSubmit)}
       >
         <ButtonText>Singup</ButtonText>
       </Button>
