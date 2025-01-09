@@ -3,7 +3,7 @@ import { SignupForm } from "@/components/SignupForm";
 
 export default function SignUp() {
   return (
-    <Center>
+    <Center className="bg-white h-full">
       <SignupForm />
     </Center>
   );
