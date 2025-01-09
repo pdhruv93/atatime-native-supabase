@@ -37,9 +37,14 @@
       [
         "expo-font",
         {
-          "fonts": [
-            "./assets/fonts/Montserrat-Regular.ttf"
-          ]
+          "fonts": ["./assets/fonts/Montserrat-Regular.ttf"]
+        }
+      ],
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true,
+          "faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
         }
       ]
     ],

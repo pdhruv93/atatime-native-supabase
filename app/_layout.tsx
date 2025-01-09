@@ -6,7 +6,6 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import { Stack } from "expo-router";
-import { AppBar } from "@/components/AppBar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -30,10 +29,7 @@ export default function RootLayout() {
   return (
     <GluestackUIProvider mode="light">
       <SafeAreaView style={{ flex: 1 }}>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="home" options={{ header: () => <AppBar /> }} />
-          <Stack.Screen name="profile" options={{ headerShown: false }} />
-        </Stack>
+        <Stack screenOptions={{ headerShown: false }} />
       </SafeAreaView>
 
       <StatusBar style="auto" />
