@@ -13,9 +13,14 @@ export function SignupForm() {
   const { errors, handleSubmit, onFormSubmit, register } = useSignup();
 
   return (
-    <VStack className="w-full">
+    <VStack space="lg" className="w-full">
       <FormControl isInvalid={!!errors.displayName}>
-        <Input {...register("displayName")} isInvalid={!!errors.displayName}>
+        <Input
+          id="displayName"
+          size="xl"
+          {...register("displayName")}
+          isInvalid={!!errors.displayName}
+        >
           <InputField placeholder="Your name" />
         </Input>
 
@@ -29,7 +34,7 @@ export function SignupForm() {
       </FormControl>
 
       <FormControl isInvalid={!!errors.email}>
-        <Input {...register("email")} isInvalid={!!errors.email}>
+        <Input size="xl" {...register("email")} isInvalid={!!errors.email}>
           <InputField placeholder="Email" />
         </Input>
 
@@ -43,7 +48,7 @@ export function SignupForm() {
       </FormControl>
 
       <Button
-        size="md"
+        size="xl"
         variant="solid"
         action="primary"
         onPress={handleSubmit(onFormSubmit)}
