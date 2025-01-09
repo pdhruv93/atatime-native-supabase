@@ -1,5 +1,10 @@
-import { Text } from "react-native";
+import { Center } from "@/components/ui/center";
+import { SignupForm } from "@/components/SignupForm";
 
 export default function SignUp() {
-  return <Text>This is sign up Screen</Text>;
+  return (
+    <Center>
+      <SignupForm />
+    </Center>
+  );
 }
