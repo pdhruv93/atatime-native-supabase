@@ -72,7 +72,7 @@ export function SignupForm() {
         action="primary"
         onPress={handleSubmit(onFormSubmit)}
       >
-        <ButtonText>Singup</ButtonText>
+        <ButtonText>Send Signin link</ButtonText>
       </Button>
     </VStack>
   );
