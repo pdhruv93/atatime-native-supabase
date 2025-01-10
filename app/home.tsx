@@ -3,9 +3,8 @@ import { Text } from "react-native";
 import { Button, ButtonText } from "@/components/ui/button";
 
 export default function Home() {
-  const { loggedInUser, signOut } = useLoggedInUser();
+  const { signOut } = useLoggedInUser();
 
-  console.log(loggedInUser);
   return (
     <>
       <Text>This is Home Screen</Text>

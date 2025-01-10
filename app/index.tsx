@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 const createSessionFromUrl = async (url: string) => {
   const { params, errorCode } = QueryParams.getQueryParams(url);
+
   if (errorCode) {
     throw errorCode;
   }
@@ -36,7 +37,7 @@ export default function App() {
           generateToast("session", "error", error);
         });
     }
-  }, []);
+  }, [url]);
 
   useEffect(() => {
     supabase.auth
