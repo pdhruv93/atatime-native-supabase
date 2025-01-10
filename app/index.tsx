@@ -35,6 +35,17 @@ export default function App() {
   const url = Linking.useURL();
 
   useEffect(() => {
+    supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        router.replace("/home");
+        SplashScreen.hideAsync();
+      } else {
+        router.replace("/sign-up");
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     if (url) {
       createSessionFromUrl(url)
         .then()
@@ -58,16 +69,5 @@ export default function App() {
         router.replace("/sign-up");
       })
       .finally(() => SplashScreen.hideAsync());
-  }, []);
-
-  useEffect(() => {
-    supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) {
-        router.replace("/home");
-        SplashScreen.hideAsync();
-      } else {
-        router.replace("/sign-up");
-      }
-    });
   }, []);
 }
