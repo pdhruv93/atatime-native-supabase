@@ -24,6 +24,7 @@ export function useLoggedInUser() {
 
   return {
     isLoading,
-    user: session?.user,
+    loggedInUser: session?.user,
+    signOut: () => supabase.auth.signOut(),
   };
 }

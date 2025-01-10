@@ -39,17 +39,20 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    console.log(":::checking auth");
     supabase.auth
       .getSession()
       .then((data) => {
         if (data.data.session) {
           router.replace("/home");
-          SplashScreen.hideAsync();
+        } else {
+          router.replace("/sign-up");
         }
       })
       .catch(() => {
         router.replace("/sign-up");
-      });
+      })
+      .finally(() => SplashScreen.hideAsync());
   }, []);
 
   useEffect(() => {
