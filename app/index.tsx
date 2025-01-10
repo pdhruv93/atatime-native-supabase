@@ -39,7 +39,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    console.log(":::checking auth");
     supabase.auth
       .getSession()
       .then((data) => {
