@@ -28,9 +28,8 @@ export function useSignup() {
       options: {
         emailRedirectTo: redirectTo,
         data: {
-          first_name: "Dhruv",
-          last_name: "Pandey",
-          bio: "",
+          display_name: data.displayName,
+          bio: "This is bio",
           age: undefined,
           profile_url: undefined,
         },

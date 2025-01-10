@@ -12,12 +12,14 @@ const createSessionFromUrl = async (url: string) => {
     throw errorCode;
   }
 
-  const { token } = params;
-  if (!token) return;
+  const { access_token, refresh_token } = params;
 
-  const { error } = await supabase.auth.verifyOtp({
-    token_hash: token,
-    type: "email",
+  console.log("::URL", url, access_token, refresh_token);
+  if (!access_token) return;
+
+  const { error } = await supabase.auth.setSession({
+    access_token,
+    refresh_token,
   });
 
   if (error) {
