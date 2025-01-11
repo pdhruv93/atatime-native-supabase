@@ -1,3 +1,5 @@
+import { Text } from "react-native";
+
 export default function NotFoundScreen() {
-  return <>This screen does not exists</>;
+  return <Text>This screen does not exists</Text>;
 }
