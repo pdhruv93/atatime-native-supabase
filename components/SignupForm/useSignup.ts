@@ -15,7 +15,6 @@ export function useSignup() {
   } = useForm<FormInputs>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      displayName: "",
       email: "",
     },
   });
@@ -27,12 +26,6 @@ export function useSignup() {
       email: data.email,
       options: {
         emailRedirectTo: redirectTo,
-        data: {
-          display_name: data.displayName,
-          bio: "This is bio",
-          age: undefined,
-          profile_url: undefined,
-        },
       },
     });
 

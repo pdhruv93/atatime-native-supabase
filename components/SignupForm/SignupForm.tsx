@@ -18,31 +18,6 @@ export function SignupForm() {
     <VStack space="lg" className="w-full">
       <Controller
         control={control}
-        name="displayName"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <FormControl isInvalid={!!errors.displayName}>
-            <Input size="xl" isInvalid={!!errors.displayName}>
-              <InputField
-                placeholder="Your name"
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
-            </Input>
-
-            <FormControlError>
-              <FormControlErrorIcon as={AlertCircleIcon} />
-
-              <FormControlErrorText>
-                {errors.displayName && errors.displayName.message}
-              </FormControlErrorText>
-            </FormControlError>
-          </FormControl>
-        )}
-      />
-
-      <Controller
-        control={control}
         name="email"
         render={({ field: { onChange, onBlur, value } }) => (
           <FormControl isInvalid={!!errors.email}>
