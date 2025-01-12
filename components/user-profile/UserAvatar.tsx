@@ -8,12 +8,17 @@ import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 import { router } from "expo-router";
 import { Pressable } from "react-native";
 
-export function UserAvatar() {
+interface UserAvatarProps {
+  size?: "md" | "sm" | "lg" | "xl" | "2xl" | "xs" | undefined;
+  onPress?: () => void;
+}
+
+export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
   const { loggedInUser } = useLoggedInUser();
 
   return (
-    <Pressable onPress={() => router.push("/profile")}>
-      <Avatar size="md">
+    <Pressable onPress={onPress}>
+      <Avatar size={size}>
         <AvatarFallbackText>Dhruv Pandey</AvatarFallbackText>
         <AvatarImage
           source={{

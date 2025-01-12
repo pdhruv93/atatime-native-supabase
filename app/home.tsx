@@ -1,9 +1,10 @@
-import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 import { Text } from "react-native";
 import { Button, ButtonText } from "@/components/ui/button";
 import { VStack } from "@/components/ui/vstack";
 import { UserAvatar } from "@/components/user-profile";
 import { Box } from "@/components/ui/box";
+import { router } from "expo-router";
+import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 
 export default function Home() {
   const { signOut } = useLoggedInUser();
@@ -11,7 +12,7 @@ export default function Home() {
   return (
     <VStack space="4xl" className="h-full bg-white">
       <Box className="items-end">
-        <UserAvatar />
+        <UserAvatar onPress={() => router.push("/profile")} />
       </Box>
 
       <Text>Main body of app</Text>
