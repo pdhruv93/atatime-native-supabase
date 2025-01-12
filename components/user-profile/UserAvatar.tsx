@@ -5,7 +5,6 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar";
 import { useLoggedInUser } from "@/hooks/useLoggedInUser";
-import { router } from "expo-router";
 import { Pressable } from "react-native";
 
 interface UserAvatarProps {
@@ -15,6 +14,8 @@ interface UserAvatarProps {
 
 export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
   const { loggedInUser } = useLoggedInUser();
+
+  console.log(loggedInUser);
 
   return (
     <Pressable onPress={onPress}>
