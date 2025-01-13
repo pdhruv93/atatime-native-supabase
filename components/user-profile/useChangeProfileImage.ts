@@ -17,7 +17,7 @@ export function useChangeProfileImage() {
       // No permissions request is necessary for launching the image library
       let result = await launchImageLibraryAsync({
         mediaTypes: ["images"],
-        allowsEditing: true,
+        allowsEditing: false,
         aspect: [4, 3],
         quality: 1,
       });
@@ -39,7 +39,7 @@ export function useChangeProfileImage() {
       const { error: uploadError } = await supabase.storage
         .from("profile-pictures")
         .upload(fileName, blob, {
-          contentType: "image/jpg",
+          contentType: "image/*",
           cacheControl: "3600",
           upsert: true,
         });
