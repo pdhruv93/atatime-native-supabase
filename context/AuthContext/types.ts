@@ -8,6 +8,9 @@ export interface AuthContextType {
   loggedInUserId: string | undefined;
   loggedInUser: User | null;
   refetchUserProfile: () => void;
-  updateUserProfileLocally: (newProfile: Partial<User>) => void;
+  updateUserProfileLocally: (
+    newProfile: Partial<User>,
+    redirectToHomeAfterUpdate?: boolean
+  ) => void;
   signOut: () => void;
 }

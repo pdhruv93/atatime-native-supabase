@@ -71,12 +71,19 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
     }
   };
 
-  const updateUserProfileLocally = (newProfile: Partial<LoggedInUserType>) => {
+  const updateUserProfileLocally = (
+    newProfile: Partial<LoggedInUserType>,
+    redirectToHomeAfterUpdate = true
+  ) => {
     setUserProfile((oldProfile) => ({
       ...defaultUserProfile,
       ...oldProfile,
       ...newProfile,
     }));
+
+    if (redirectToHomeAfterUpdate) {
+      router.push("/home");
+    }
   };
 
   // Listen to Auth state changes
