@@ -104,6 +104,7 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
   return (
     <AuthContext.Provider
       value={{
+        loggedInUserId: loggedInUser?.id,
         isLoading,
         loggedInUser: userProfile,
         refetchUserProfile: getUserProfileData,
