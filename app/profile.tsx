@@ -2,11 +2,7 @@ import { Button, ButtonIcon } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { ChevronsLeftIcon } from "@/components/ui/icon";
 import { VStack } from "@/components/ui/vstack";
-import {
-  ProfileImageChange,
-  UserAvatar,
-  UserProfileForm,
-} from "@/components/user-profile";
+import { ProfileImage, UserProfileForm } from "@/components/user-profile";
 import { useAuthContext } from "@/context/AuthContext";
 import { router } from "expo-router";
 import { ScrollView } from "react-native";
@@ -30,7 +26,7 @@ export default function Profile() {
             <ButtonIcon as={ChevronsLeftIcon} />
           </Button>
 
-          <UserAvatar size="xl" />
+          <ProfileImage />
           <Heading size="2xl">{user?.display_name || "No Name yet"}</Heading>
           <Heading size="sm">{user?.email}</Heading>
         </VStack>
@@ -43,8 +39,6 @@ export default function Profile() {
         <VStack space="md">
           <Heading size="xl">Location Preference</Heading>
         </VStack>
-
-        <ProfileImageChange />
       </VStack>
     </ScrollView>
   );

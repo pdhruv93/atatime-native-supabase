@@ -43,11 +43,13 @@ export function useChangeProfileImage() {
       // Convert the file URI to blob
       const blob = await fetch(filePath).then((res) => res.blob());
 
+      console.log(blob);
+
       console.log("Uploading image to Supabase storage...");
       const { error: uploadError } = await supabase.storage
         .from("profile-pictures")
         .upload(fileName, blob, {
-          contentType: "image/png",
+          contentType: "image/jpg",
           cacheControl: "3600",
           upsert: true,
         });
