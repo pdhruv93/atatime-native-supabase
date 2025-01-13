@@ -8,7 +8,7 @@ import { useAuthContext } from "@/context/AuthContext";
 
 export function useProfile() {
   const { generateToast } = useShowToast();
-  const { loggedInUser: user } = useAuthContext();
+  const { loggedInUser: user, refetchUserProfile } = useAuthContext();
   const {
     register,
     handleSubmit,
@@ -24,20 +24,18 @@ export function useProfile() {
   });
 
   const onFormSubmit: SubmitHandler<FormInputs> = async (data) => {
-    const redirectTo = makeRedirectUri();
-
-    const { error } = await supabase.auth.signInWithOtp({
-      email: data.email,
-      options: {
-        emailRedirectTo: redirectTo,
-      },
-    });
+    const { error } = await supabase
+      .from("user_profile")
+      .update({ display_name: data.displayName, age: data.age, bio: data.bio })
+      .eq("user_id", user?.user_id);
 
     generateToast(
       "profile-update",
       error ? "error" : "success",
       error ? error.message : "Profile Updated"
     );
+
+    refetchUserProfile();
   };
 
   return { register, errors, handleSubmit, onFormSubmit, control };
