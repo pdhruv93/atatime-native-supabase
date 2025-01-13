@@ -1,8 +1,15 @@
+import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { useChangeProfileImage } from "./useChangeProfileImage";
 import { UserAvatar } from "./UserAvatar";
+import { Box } from "@/components/ui/box";
 
 export function ProfileImage() {
-  const { pickImage } = useChangeProfileImage();
+  const { pickImage, isUploading } = useChangeProfileImage();
 
-  return <UserAvatar size="xl" onPress={pickImage} />;
+  return (
+    <Box>
+      <LoadingSpinner isVisible={isUploading} />
+      <UserAvatar size="xl" onPress={pickImage} />
+    </Box>
+  );
 }

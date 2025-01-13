@@ -11,6 +11,8 @@ export function useChangeProfileImage() {
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
 
+  console.log(selectedImageUrl);
+
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await launchImageLibraryAsync({
@@ -26,6 +28,7 @@ export function useChangeProfileImage() {
     }
 
     setSelectedImageUrl(result.assets[0].uri);
+
     uploadImage();
   };
 
@@ -33,6 +36,8 @@ export function useChangeProfileImage() {
     if (!selectedImageUrl) {
       return;
     }
+
+    console.log("Found valid file, preapring upload...");
 
     try {
       setIsUploading(true);
