@@ -29,6 +29,7 @@
     "@gluestack-ui/progress": "^0.1.18",
     "@gluestack-ui/spinner": "^0.1.15",
     "@gluestack-ui/switch": "^0.1.23",
+    "@gluestack-ui/textarea": "^0.1.24",
     "@gluestack-ui/toast": "^1.0.8",
     "@hookform/resolvers": "^3.10.0",
     "@legendapp/motion": "^2.4.0",
@@ -38,8 +39,10 @@
     "@supabase/supabase-js": "^2.47.11",
     "babel-plugin-module-resolver": "^5.0.2",
     "expo": "~52.0.23",
+    "expo-auth-session": "~6.0.1",
     "expo-blur": "~14.0.1",
     "expo-constants": "~17.0.3",
+    "expo-crypto": "~14.0.1",
     "expo-font": "~13.0.2",
     "expo-haptics": "~14.0.0",
     "expo-linking": "~7.0.3",
@@ -65,9 +68,7 @@
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
     "tailwindcss": "^3.4.17",
-    "zod": "^3.24.1",
-    "expo-auth-session": "~6.0.1",
-    "expo-crypto": "~14.0.1"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
