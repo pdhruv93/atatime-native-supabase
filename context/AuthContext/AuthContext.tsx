@@ -27,7 +27,7 @@ const defaultUserProfile: LoggedInUserType = {
   location: null,
   location_name: null,
   preferences: null,
-  profile_url: null,
+  profile_picture: null,
   user_id: "",
   whatsapp_number: null,
 };

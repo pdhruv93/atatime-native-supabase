@@ -21,7 +21,7 @@ export type Database = {
           location: unknown | null
           location_name: string | null
           preferences: Json | null
-          profile_url: string | null
+          profile_picture: string | null
           user_id: string
           whatsapp_number: string | null
         }
@@ -36,7 +36,7 @@ export type Database = {
           location?: unknown | null
           location_name?: string | null
           preferences?: Json | null
-          profile_url?: string | null
+          profile_picture?: string | null
           user_id: string
           whatsapp_number?: string | null
         }
@@ -51,7 +51,7 @@ export type Database = {
           location?: unknown | null
           location_name?: string | null
           preferences?: Json | null
-          profile_url?: string | null
+          profile_picture?: string | null
           user_id?: string
           whatsapp_number?: string | null
         }

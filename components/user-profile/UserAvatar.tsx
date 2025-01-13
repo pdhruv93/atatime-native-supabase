@@ -20,7 +20,7 @@ export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
         <AvatarFallbackText>{loggedInUser?.display_name}</AvatarFallbackText>
         <AvatarImage
           source={{
-            uri: loggedInUser?.profile_url ?? undefined,
+            uri: loggedInUser?.profile_picture ?? undefined,
           }}
         />
       </Avatar>

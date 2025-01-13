@@ -53,7 +53,7 @@ export function useChangeProfileImage() {
         return;
       }
 
-      updateUserProfileLocally({ profile_url: filePath });
+      updateUserProfileLocally({ profile_picture: filePath });
     } catch (e) {
       console.error(e);
     } finally {
