@@ -2,7 +2,7 @@ import { VStack } from "@/components/ui/vstack";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Input, InputField } from "@/components/ui/input";
 import { Textarea, TextareaInput } from "@/components/ui/textarea";
-import { useProfile } from "./useProfile";
+import { useBasicProfile } from "./useBasicProfile";
 import {
   FormControl,
   FormControlError,
@@ -14,8 +14,8 @@ import {
 import { AlertCircleIcon } from "@/components/ui/icon";
 import { Controller } from "react-hook-form";
 
-export function UserProfileForm() {
-  const { errors, handleSubmit, onFormSubmit, control } = useProfile();
+export function BasicProfileForm() {
+  const { errors, handleSubmit, onFormSubmit, control } = useBasicProfile();
 
   return (
     <VStack space="lg" className="w-full">

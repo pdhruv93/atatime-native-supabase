@@ -5,7 +5,7 @@ import { supabase } from "@/utils/supabase";
 import { useShowToast } from "@/hooks/useShowToast";
 import { useAuthContext } from "@/context/AuthContext";
 
-export function useProfile() {
+export function useBasicProfile() {
   const { generateToast } = useShowToast();
   const { loggedInUser: user, updateUserProfileLocally } = useAuthContext();
   const {

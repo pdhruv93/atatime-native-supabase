@@ -1,6 +1,6 @@
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { useChangeProfileImage } from "./useChangeProfileImage";
-import { UserAvatar } from "./UserAvatar";
+import { UserAvatar } from "../UserAvatar";
 import { Box } from "@/components/ui/box";
 
 export function ProfileImage() {
