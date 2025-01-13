@@ -6,10 +6,9 @@ import { createClient } from "@supabase/supabase-js";
 // you can use the service key instead of the anon key, which will give you all permissions
 
 const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_PROJECT_URL as string;
-const supaBaseServiceKey = process.env
-  .EXPO_PUBLIC_SUPABASE_SERVICE_KEY as string;
+const supaBaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON as string;
 
-export const supabase = createClient(supabaseUrl, supaBaseServiceKey, {
+export const supabase = createClient(supabaseUrl, supaBaseAnonKey, {
   auth: {
     storage: AsyncStorage,
     autoRefreshToken: true,

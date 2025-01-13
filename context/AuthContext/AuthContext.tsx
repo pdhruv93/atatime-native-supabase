@@ -12,6 +12,7 @@ import { router, SplashScreen } from "expo-router";
 import { useShowToast } from "@/hooks/useShowToast";
 import * as Linking from "expo-linking";
 import { createSessionFromUrl } from "./utils";
+import { User as LoggedInUserType } from "./types";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -20,21 +21,26 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
   const { generateToast } = useShowToast();
   const [isLoading, setIsLoading] = useState(true);
   const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
-  const [userProfile, setUserProfile] = useState<any | null>(null);
+  const [userProfile, setUserProfile] = useState<LoggedInUserType | null>(null);
+
+  const onErrorHandler = () => {
+    setLoggedInUser(null);
+    setIsLoading(false);
+    SplashScreen.hideAsync();
+    router.replace("/sign-up");
+  };
 
   const getUserProfileData = async () => {
     if (loggedInUser?.id) {
       const { data: userProfileData, error } = await supabase
         .from("user_profile")
         .select()
-        .eq("user_id", loggedInUser?.id);
+        .eq("user_id", loggedInUser?.id)
+        .single();
 
       if (error) {
         generateToast("user-fetch", "error", error.message);
-        setLoggedInUser(null);
-        setIsLoading(false);
-        SplashScreen.hideAsync();
-        router.replace("/sign-up");
+        onErrorHandler();
         return;
       }
 
@@ -52,10 +58,7 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
       if (session) {
         setLoggedInUser(session.user);
       } else {
-        setLoggedInUser(null);
-        setIsLoading(false);
-        SplashScreen.hideAsync();
-        router.replace("/sign-up");
+        onErrorHandler();
       }
     });
   }, []);
@@ -66,10 +69,8 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
       createSessionFromUrl(url)
         .then()
         .catch((error: string) => {
-          generateToast("session", "error", error);
-          setLoggedInUser(null);
-          setIsLoading(false);
-          SplashScreen.hideAsync();
+          generateToast("user-fetch", "error", error);
+          onErrorHandler();
         });
     }
   }, [url]);
@@ -82,17 +83,11 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
         if (data.data.session) {
           setLoggedInUser(data.data.session.user);
         } else {
-          setLoggedInUser(null);
-          setIsLoading(false);
-          SplashScreen.hideAsync();
-          router.replace("/sign-up");
+          onErrorHandler();
         }
       })
       .catch(() => {
-        setLoggedInUser(null);
-        setIsLoading(false);
-        SplashScreen.hideAsync();
-        router.replace("/sign-up");
+        onErrorHandler();
       });
   }, []);
 

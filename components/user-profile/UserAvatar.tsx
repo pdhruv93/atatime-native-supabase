@@ -13,9 +13,9 @@ interface UserAvatarProps {
 }
 
 export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
-  const { loggedInUserId } = useAuthContext();
+  const { loggedInUserId, loggedInUser } = useAuthContext();
 
-  console.log(loggedInUserId);
+  console.log(loggedInUserId, loggedInUser);
 
   return (
     <Pressable onPress={onPress}>

@@ -9,7 +9,8 @@
     "ios": "DARK_MODE=media expo start --ios",
     "web": "DARK_MODE=media expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "gen-types": "npx supabase gen types typescript --project-id ewiwawyblvvxubxuljko --schema public > database.types.ts"
   },
   "jest": {
     "preset": "jest-expo"
