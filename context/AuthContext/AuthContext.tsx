@@ -16,6 +16,22 @@ import { User as LoggedInUserType } from "./types";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const defaultUserProfile: LoggedInUserType = {
+  age: null,
+  bio: null,
+  created_at: "",
+  display_name: null,
+  email: null,
+  instagram_handle: null,
+  is_complete: null,
+  location: null,
+  location_name: null,
+  preferences: null,
+  profile_url: null,
+  user_id: "",
+  whatsapp_number: null,
+};
+
 export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
   const url = Linking.useURL();
   const { generateToast } = useShowToast();
@@ -53,6 +69,14 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
       SplashScreen.hideAsync();
       router.replace("/home");
     }
+  };
+
+  const updateUserProfileLocally = (newProfile: Partial<LoggedInUserType>) => {
+    setUserProfile((oldProfile) => ({
+      ...defaultUserProfile,
+      ...oldProfile,
+      ...newProfile,
+    }));
   };
 
   // Listen to Auth state changes
@@ -107,6 +131,7 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
         isLoading,
         loggedInUser: userProfile,
         refetchUserProfile: getUserProfileData,
+        updateUserProfileLocally,
         signOut: () => supabase.auth.signOut(),
       }}
     >

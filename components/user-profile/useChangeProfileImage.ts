@@ -2,12 +2,11 @@ import { useAuthContext } from "@/context/AuthContext";
 import { useShowToast } from "@/hooks/useShowToast";
 import { supabase } from "@/utils/supabase";
 import { launchImageLibraryAsync } from "expo-image-picker";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function useChangeProfileImage() {
-  const { loggedInUserId, refetchUserProfile } = useAuthContext();
+  const { loggedInUserId, updateUserProfileLocally } = useAuthContext();
   const { generateToast } = useShowToast();
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
 
   const pickAndUploadImage = async () => {
@@ -54,14 +53,7 @@ export function useChangeProfileImage() {
         return;
       }
 
-      console.log("Getting public URL...");
-      const { data } = supabase.storage
-        .from("profile-pictures")
-        .getPublicUrl(fileName);
-
-      if (data.publicUrl) {
-        setAvatarUrl(data.publicUrl);
-      }
+      updateUserProfileLocally({ profile_url: filePath });
     } catch (e) {
       console.error(e);
     } finally {
@@ -69,28 +61,5 @@ export function useChangeProfileImage() {
     }
   };
 
-  useEffect(() => {
-    const updateUserProfile = async () => {
-      const { error } = await supabase
-        .from("user_profile")
-        .update({
-          profile_url: avatarUrl,
-        })
-        .eq("user_id", loggedInUserId);
-
-      generateToast(
-        "profile-update",
-        error ? "error" : "success",
-        error ? error.message : "Profile Updated"
-      );
-
-      refetchUserProfile();
-    };
-
-    if (avatarUrl) {
-      updateUserProfile();
-    }
-  }, [avatarUrl]);
-
-  return { avatarUrl, isUploading, pickAndUploadImage };
+  return { isUploading, pickAndUploadImage };
 }
