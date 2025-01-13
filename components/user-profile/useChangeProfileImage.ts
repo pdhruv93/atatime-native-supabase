@@ -7,48 +7,33 @@ import { useState } from "react";
 export function useChangeProfileImage() {
   const { loggedInUserId } = useAuthContext();
   const { generateToast } = useShowToast();
-  const [selectedImageUrl, setSelectedImageUrl] = useState<string | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
 
-  console.log(selectedImageUrl);
-
-  const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
-    let result = await launchImageLibraryAsync({
-      mediaTypes: ["images"],
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-
-    if (result.canceled) {
-      generateToast("profile-upload", "error", "No image was selected");
-      return;
-    }
-
-    setSelectedImageUrl(result.assets[0].uri);
-
-    uploadImage();
-  };
-
-  const uploadImage = async () => {
-    if (!selectedImageUrl) {
-      return;
-    }
-
-    console.log("Found valid file, preapring upload...");
+  const pickAndUploadImage = async () => {
+    setIsUploading(true);
 
     try {
-      setIsUploading(true);
-      const fileExt = selectedImageUrl.split(".").pop();
+      // No permissions request is necessary for launching the image library
+      let result = await launchImageLibraryAsync({
+        mediaTypes: ["images"],
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+      if (result.canceled) {
+        generateToast("profile-upload", "error", "No image was selected");
+        return;
+      }
+
+      console.log("Found valid file, preapring upload...");
+      const filePath = result.assets[0].uri;
+      const fileExt = filePath.split(".").pop();
       const fileName = `${loggedInUserId}.${fileExt}`;
-      const filePath = selectedImageUrl;
 
       // Convert the file URI to blob
       const blob = await fetch(filePath).then((res) => res.blob());
-
-      console.log(blob);
 
       console.log("Uploading image to Supabase storage...");
       const { error: uploadError } = await supabase.storage
@@ -78,10 +63,11 @@ export function useChangeProfileImage() {
         setAvatarUrl(data.publicUrl);
       }
     } catch (e) {
+      console.error(e);
     } finally {
       setIsUploading(false);
     }
   };
 
-  return { avatarUrl, isUploading, pickImage };
+  return { avatarUrl, isUploading, pickAndUploadImage };
 }

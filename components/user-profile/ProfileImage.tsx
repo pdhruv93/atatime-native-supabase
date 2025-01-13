@@ -4,12 +4,12 @@ import { UserAvatar } from "./UserAvatar";
 import { Box } from "@/components/ui/box";
 
 export function ProfileImage() {
-  const { pickImage, isUploading } = useChangeProfileImage();
+  const { pickAndUploadImage, isUploading } = useChangeProfileImage();
 
   return (
     <Box>
       <LoadingSpinner isVisible={isUploading} />
-      <UserAvatar size="xl" onPress={pickImage} />
+      <UserAvatar size="xl" onPress={pickAndUploadImage} />
     </Box>
   );
 }
