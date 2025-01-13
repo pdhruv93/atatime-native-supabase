@@ -40,6 +40,7 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
   const [userProfile, setUserProfile] = useState<LoggedInUserType | null>(null);
   const isProfileComplete =
     !!userProfile?.display_name &&
+    !!userProfile.location_name &&
     (!!userProfile.instagram_handle || !!userProfile.whatsapp_number);
 
   const onErrorHandler = () => {

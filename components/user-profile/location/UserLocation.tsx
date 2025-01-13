@@ -1,74 +1,75 @@
-import { Text, Alert, View } from "react-native";
-import React, { useEffect, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useState } from "react";
 import * as Location from "expo-location";
+import { Button, ButtonIcon } from "@/components/ui/button";
+import { useAuthContext } from "@/context/AuthContext";
+import { useShowToast } from "@/hooks/useShowToast";
+import { HStack } from "@/components/ui/hstack";
+import { Heading } from "@/components/ui/heading";
+import { RepeatIcon } from "@/components/ui/icon";
+import { supabase } from "@/utils/supabase";
 
 export function UserLocation() {
-  const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
-    "Location Loading....."
-  );
-  const [locationServicesEnabled, setLocationServicesEnabled] = useState(false);
-  useEffect(() => {
-    checkIfLocationEnabled();
-    getCurrentLocation();
-  }, []);
-  //check if location is enable or not
-  const checkIfLocationEnabled = async () => {
-    let enabled = await Location.hasServicesEnabledAsync(); //returns true or false
-    if (!enabled) {
-      //if not enable
-      Alert.alert("Location not enabled", "Please enable your Location", [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") },
-      ]);
-    } else {
-      setLocationServicesEnabled(enabled); //store true into state
-    }
-  };
-  //get current location
+  const { loggedInUser, updateUserProfileLocally } = useAuthContext();
+  const { generateToast } = useShowToast();
+
   const getCurrentLocation = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync(); //used for the pop up box where we give permission to use location
-    console.log(status);
+    //used for the pop up box where we give permission to use location
+    const { status } = await Location.requestForegroundPermissionsAsync();
+
     if (status !== "granted") {
-      Alert.alert(
-        "Permission denied",
-        "Allow the app to use the location services",
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel",
-          },
-          { text: "OK", onPress: () => console.log("OK Pressed") },
-        ]
-      );
+      generateToast("location", "error", "Location access not granted");
+      return;
     }
 
     //get current position lat and long
-    const { coords } = await Location.getCurrentPositionAsync();
-    console.log(coords);
+    const {
+      coords: { latitude, longitude },
+    } = await Location.getCurrentPositionAsync();
 
-    if (coords) {
-      const { latitude, longitude } = coords;
-      console.log(latitude, longitude);
-
+    if (latitude && longitude) {
       //provide lat and long to get the the actual address
-      let responce = await Location.reverseGeocodeAsync({
+      let response = await Location.reverseGeocodeAsync({
         latitude,
         longitude,
       });
-      console.log(responce);
-      //loop on the responce to get the actual result
-      for (let item of responce) {
-        let address = `${item.name} ${item.city} ${item.postalCode}`;
-        setDisplayCurrentAddress(address);
+
+      //loop on the response to get the actual result
+      for (let item of response) {
+        const locationName = item.city;
+
+        const { error } = await supabase
+          .from("user_profile")
+          .update({ location_name: locationName })
+          .eq("user_id", loggedInUser?.user_id);
+
+        if (error) {
+          generateToast("location", "error", error.message);
+          return;
+        }
+
+        updateUserProfileLocally({
+          location_name: locationName,
+          location: `POINT(${longitude} ${latitude})`,
+        });
+        generateToast("location", "success", "Location Updated");
       }
     }
   };
 
-  return <Text>{displayCurrentAddress}</Text>;
+  return (
+    <HStack className="items-center">
+      <Heading size="sm">
+        {loggedInUser?.location_name || "No location"}
+      </Heading>
+
+      <Button
+        size="xs"
+        className="rounded-full p-2 self-start ml-2"
+        variant="outline"
+        onPress={getCurrentLocation}
+      >
+        <ButtonIcon as={RepeatIcon} />
+      </Button>
+    </HStack>
+  );
 }

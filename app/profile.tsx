@@ -2,7 +2,11 @@ import { Button, ButtonIcon } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { ChevronsLeftIcon } from "@/components/ui/icon";
 import { VStack } from "@/components/ui/vstack";
-import { ProfileImage, BasicProfileForm } from "@/components/user-profile";
+import {
+  ProfileImage,
+  BasicProfileForm,
+  UserLocation,
+} from "@/components/user-profile";
 import { useAuthContext } from "@/context/AuthContext";
 import { router } from "expo-router";
 import { ScrollView } from "react-native";
@@ -28,16 +32,13 @@ export default function Profile() {
 
           <ProfileImage />
           <Heading size="2xl">{user?.display_name || "No Name yet"}</Heading>
-          <Heading size="sm">{user?.email}</Heading>
+          <Heading size="md">{user?.email}</Heading>
+          <UserLocation />
         </VStack>
 
         <VStack space="md">
           <Heading size="xl">Basic Profile</Heading>
           <BasicProfileForm />
-        </VStack>
-
-        <VStack space="md">
-          <Heading size="xl">Location Preference</Heading>
         </VStack>
       </VStack>
     </ScrollView>

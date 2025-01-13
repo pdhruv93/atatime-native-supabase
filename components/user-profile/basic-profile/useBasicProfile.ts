@@ -26,7 +26,9 @@ export function useBasicProfile() {
 
   const onFormSubmit: SubmitHandler<FormInputs> = async (data) => {
     const isProfileComplete =
-      !!data.displayName && (!!data.instagramHandle || !!data.whatsappNumber);
+      !!data.displayName &&
+      !!user?.location_name &&
+      (!!data.instagramHandle || !!data.whatsappNumber);
 
     const newProfileData = {
       display_name: data.displayName,
