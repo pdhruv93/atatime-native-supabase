@@ -22,7 +22,7 @@ export function useChangeProfileImage() {
       });
 
       if (result.canceled) {
-        generateToast("profile-upload", "error", "No image was selected");
+        generateToast("profile-pic-upload", "error", "No image was selected");
         return;
       }
 
@@ -32,7 +32,7 @@ export function useChangeProfileImage() {
       const fileName = `${loggedInUserId}.${fileExt}`;
 
       // Convert the file URI to blob
-      /*const blob = await fetch(filePath).then((res) => res.blob());
+      const blob = await fetch(filePath).then((res) => res.blob());
 
       console.log("Uploading image to Supabase storage...");
       const { error: uploadError } = await supabase.storage
@@ -43,17 +43,24 @@ export function useChangeProfileImage() {
           upsert: true,
         });
 
-      generateToast(
-        "profile-upload",
-        uploadError ? "error" : "success",
-        uploadError ? uploadError.message : "Profile Updated successfully"
-      );
-
       if (uploadError) {
+        generateToast("profile-pic-upload", "error", uploadError.message);
         return;
       }
-    */
+
+      // Update User Profile in DB
+      const { error } = await supabase
+        .from("user_profile")
+        .update({ profile_picture: fileName })
+        .eq("user_id", loggedInUserId);
+
+      if (error) {
+        generateToast("profile-pic-upload", "error", error.message);
+        return;
+      }
+
       updateUserProfileLocally({ profile_picture: filePath });
+      generateToast("profile-pic-upload", "success", "Profile Updated");
     } catch (e) {
       console.error(e);
     } finally {
