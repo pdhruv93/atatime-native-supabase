@@ -4,7 +4,7 @@ import { supabase } from "@/utils/supabase";
 import { launchImageLibraryAsync } from "expo-image-picker";
 import { useState } from "react";
 
-export function useChnageProfileImage() {
+export function useChangeProfileImage() {
   const { loggedInUserId } = useAuthContext();
   const { generateToast } = useShowToast();
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | null>(null);
