@@ -1,6 +1,5 @@
 import {
   Avatar,
-  AvatarBadge,
   AvatarFallbackText,
   AvatarImage,
 } from "@/components/ui/avatar";
@@ -13,7 +12,7 @@ interface UserAvatarProps {
 }
 
 export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
-  const { loggedInUser, isProfileComplete } = useAuthContext();
+  const { loggedInUser } = useAuthContext();
 
   return (
     <Pressable onPress={onPress}>
@@ -23,10 +22,6 @@ export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
           source={{
             uri: loggedInUser?.profile_url ?? undefined,
           }}
-        />
-
-        <AvatarBadge
-          style={{ backgroundColor: isProfileComplete ? "green" : "red" }}
         />
       </Avatar>
     </Pressable>
