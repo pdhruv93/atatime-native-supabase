@@ -31,6 +31,28 @@ export function useChangeProfileImage() {
       const fileExt = filePath.split(".").pop();
       const fileName = `${loggedInUserId}.${fileExt}`;
 
+      // Convert the file URI to blob
+      const blob = await fetch(filePath).then((res) => res.blob());
+
+      console.log("Uploading image to Supabase storage...");
+      const { error: uploadError } = await supabase.storage
+        .from("profile-pictures")
+        .upload(fileName, blob, {
+          contentType: "image/*",
+          cacheControl: "3600",
+          upsert: true,
+        });
+
+      generateToast(
+        "profile-upload",
+        uploadError ? "error" : "success",
+        uploadError ? uploadError.message : "Profile Updated successfully"
+      );
+
+      if (uploadError) {
+        return;
+      }
+
       updateUserProfileLocally({ profile_url: filePath });
     } catch (e) {
       console.error(e);
