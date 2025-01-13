@@ -3,11 +3,11 @@ import { useShowToast } from "@/hooks/useShowToast";
 import { useEffect } from "react";
 
 export default function App() {
-  const { isProfileComplete } = useAuthContext();
+  const { isProfileComplete, isLoading } = useAuthContext();
   const { generateToast } = useShowToast();
 
   useEffect(() => {
-    if (!isProfileComplete) {
+    if (!isLoading && !isProfileComplete) {
       generateToast(
         "incomplete-profile",
         "warning",
