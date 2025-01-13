@@ -8,6 +8,8 @@ import {
   FormControlError,
   FormControlErrorText,
   FormControlErrorIcon,
+  FormControlHelper,
+  FormControlHelperText,
 } from "@/components/ui/form-control";
 import { AlertCircleIcon } from "@/components/ui/icon";
 import { Controller } from "react-hook-form";
@@ -86,6 +88,62 @@ export function UserProfileForm() {
 
               <FormControlErrorText>
                 {errors.bio && errors.bio.message}
+              </FormControlErrorText>
+            </FormControlError>
+          </FormControl>
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="whatsappNumber"
+        render={({ field: { onChange, onBlur, value } }) => (
+          <FormControl isInvalid={!!errors.whatsappNumber}>
+            <Input size="xl" isInvalid={!!errors.whatsappNumber}>
+              <InputField
+                placeholder="Your Whatsapp Number with country code"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value?.toString()}
+              />
+            </Input>
+
+            <FormControlHelper>
+              <FormControlHelperText>
+                Its under your Whatsapp Profile(+CC12345)
+              </FormControlHelperText>
+            </FormControlHelper>
+
+            <FormControlError>
+              <FormControlErrorIcon as={AlertCircleIcon} />
+
+              <FormControlErrorText>
+                {errors.whatsappNumber && errors.whatsappNumber.message}
+              </FormControlErrorText>
+            </FormControlError>
+          </FormControl>
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="instagramHandle"
+        render={({ field: { onChange, onBlur, value } }) => (
+          <FormControl isInvalid={!!errors.instagramHandle}>
+            <Input size="xl" isInvalid={!!errors.instagramHandle}>
+              <InputField
+                placeholder="Your Instagram Handle"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value?.toString()}
+              />
+            </Input>
+
+            <FormControlError>
+              <FormControlErrorIcon as={AlertCircleIcon} />
+
+              <FormControlErrorText>
+                {errors.instagramHandle && errors.instagramHandle.message}
               </FormControlErrorText>
             </FormControlError>
           </FormControl>

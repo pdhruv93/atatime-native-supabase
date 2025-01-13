@@ -16,13 +16,14 @@ export type Database = {
           created_at: string
           display_name: string | null
           email: string | null
-          isComplete: boolean | null
+          instagram_handle: string | null
+          is_complete: boolean | null
           location: unknown | null
           location_name: string | null
           preferences: Json | null
           profile_url: string | null
-          social_profile: Json | null
           user_id: string
+          whatsapp_number: string | null
         }
         Insert: {
           age?: number | null
@@ -30,13 +31,14 @@ export type Database = {
           created_at?: string
           display_name?: string | null
           email?: string | null
-          isComplete?: boolean | null
+          instagram_handle?: string | null
+          is_complete?: boolean | null
           location?: unknown | null
           location_name?: string | null
           preferences?: Json | null
           profile_url?: string | null
-          social_profile?: Json | null
           user_id: string
+          whatsapp_number?: string | null
         }
         Update: {
           age?: number | null
@@ -44,13 +46,14 @@ export type Database = {
           created_at?: string
           display_name?: string | null
           email?: string | null
-          isComplete?: boolean | null
+          instagram_handle?: string | null
+          is_complete?: boolean | null
           location?: unknown | null
           location_name?: string | null
           preferences?: Json | null
           profile_url?: string | null
-          social_profile?: Json | null
           user_id?: string
+          whatsapp_number?: string | null
         }
         Relationships: []
       }

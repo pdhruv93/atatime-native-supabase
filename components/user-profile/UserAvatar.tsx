@@ -13,7 +13,7 @@ interface UserAvatarProps {
 }
 
 export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
-  const { loggedInUser } = useAuthContext();
+  const { loggedInUser, isProfileComplete } = useAuthContext();
 
   console.log(loggedInUser?.display_name, loggedInUser?.profile_url);
 
@@ -26,6 +26,7 @@ export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
             uri: loggedInUser?.profile_url ?? undefined,
           }}
         />
+
         <AvatarBadge />
       </Avatar>
     </Pressable>

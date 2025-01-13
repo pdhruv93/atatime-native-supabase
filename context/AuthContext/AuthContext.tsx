@@ -22,6 +22,9 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
   const [isLoading, setIsLoading] = useState(true);
   const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
   const [userProfile, setUserProfile] = useState<LoggedInUserType | null>(null);
+  const isProfileComplete =
+    !!userProfile?.display_name &&
+    (!!userProfile.instagram_handle || !!userProfile.whatsapp_number);
 
   const onErrorHandler = () => {
     setLoggedInUser(null);
@@ -99,6 +102,7 @@ export function AuthContextProvider({ children }: PropsWithChildren<unknown>) {
   return (
     <AuthContext.Provider
       value={{
+        isProfileComplete,
         loggedInUserId: loggedInUser?.id,
         isLoading,
         loggedInUser: userProfile,
