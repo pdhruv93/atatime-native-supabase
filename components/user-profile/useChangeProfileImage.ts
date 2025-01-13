@@ -32,7 +32,7 @@ export function useChangeProfileImage() {
       const fileName = `${loggedInUserId}.${fileExt}`;
 
       // Convert the file URI to blob
-      const blob = await fetch(filePath).then((res) => res.blob());
+      /*const blob = await fetch(filePath).then((res) => res.blob());
 
       console.log("Uploading image to Supabase storage...");
       const { error: uploadError } = await supabase.storage
@@ -52,7 +52,7 @@ export function useChangeProfileImage() {
       if (uploadError) {
         return;
       }
-
+    */
       updateUserProfileLocally({ profile_picture: filePath });
     } catch (e) {
       console.error(e);
