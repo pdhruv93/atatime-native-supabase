@@ -15,8 +15,6 @@ interface UserAvatarProps {
 export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
   const { loggedInUser, isProfileComplete } = useAuthContext();
 
-  console.log(loggedInUser?.display_name, loggedInUser?.profile_url);
-
   return (
     <Pressable onPress={onPress}>
       <Avatar size={size}>
@@ -27,7 +25,9 @@ export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
           }}
         />
 
-        <AvatarBadge />
+        <AvatarBadge
+          style={{ backgroundColor: isProfileComplete ? "green" : "red" }}
+        />
       </Avatar>
     </Pressable>
   );
