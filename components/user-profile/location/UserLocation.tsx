@@ -39,7 +39,10 @@ export function UserLocation() {
 
         const { error } = await supabase
           .from("user_profile")
-          .update({ location_name: locationName })
+          .update({
+            location_name: locationName,
+            location: `POINT(${longitude} ${latitude})`,
+          })
           .eq("user_id", loggedInUser?.user_id);
 
         if (error) {
