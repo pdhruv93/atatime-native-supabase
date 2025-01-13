@@ -3,6 +3,8 @@ import { useShowToast } from "@/hooks/useShowToast";
 import { supabase } from "@/utils/supabase";
 import { launchImageLibraryAsync } from "expo-image-picker";
 import { useState } from "react";
+import { decode } from "base64-arraybuffer";
+import * as FileSystem from "expo-file-system";
 
 export function useChangeProfileImage() {
   const { loggedInUserId, updateUserProfileLocally } = useAuthContext();
@@ -31,13 +33,17 @@ export function useChangeProfileImage() {
       const fileExt = filePath.split(".").pop();
       const fileName = `${loggedInUserId}.${fileExt}`;
 
-      // Convert the file URI to blob
-      const blob = await fetch(filePath).then((res) => res.blob());
+      // Read the file as a Base64-encoded string using Expo's FileSystem
+      const base64 = await FileSystem.readAsStringAsync(filePath, {
+        encoding: FileSystem.EncodingType.Base64,
+      });
+      // Decode the Base64 string to an ArrayBuffer
+      const arrayBuffer = decode(base64);
 
       console.log("Uploading image to Supabase storage...");
       const { error: uploadError } = await supabase.storage
         .from("profile-pictures")
-        .upload(fileName, blob, {
+        .upload(fileName, arrayBuffer, {
           contentType: "image/*",
           cacheControl: "3600",
           upsert: true,
