@@ -3,7 +3,7 @@ import { Heading } from "@/components/ui/heading";
 import { ChevronsLeftIcon } from "@/components/ui/icon";
 import { VStack } from "@/components/ui/vstack";
 import {
-  ProfileImage,
+  ProfileImageChange,
   UserAvatar,
   UserProfileForm,
 } from "@/components/user-profile";
@@ -44,7 +44,7 @@ export default function Profile() {
           <Heading size="xl">Location Preference</Heading>
         </VStack>
 
-        <ProfileImage />
+        <ProfileImageChange />
       </VStack>
     </ScrollView>
   );

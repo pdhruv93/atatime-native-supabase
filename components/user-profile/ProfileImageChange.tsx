@@ -1,8 +1,8 @@
 import { Button, ButtonText } from "@/components/ui/button";
-import { useProfileImage } from "./useProfileImage";
+import { useChnageProfileImage } from "./useChnageProfileImage";
 
-export function ProfileImage() {
-  const { pickImage } = useProfileImage();
+export function ProfileImageChange() {
+  const { pickImage } = useChnageProfileImage();
 
   return (
     <Button size="xl" variant="outline" onPress={pickImage}>
