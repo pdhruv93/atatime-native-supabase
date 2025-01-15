@@ -6,7 +6,8 @@ export function useShowToast() {
   const generateToast = (
     toastId: string,
     type: "error" | "warning" | "success" | "info" | "muted" | undefined,
-    message: string
+    message: string,
+    duration = 3000
   ) => {
     if (toast.isActive(toastId)) {
       return;
@@ -15,7 +16,7 @@ export function useShowToast() {
     toast.show({
       id: toastId,
       placement: "top",
-      duration: 3000,
+      duration,
       render: ({ id }) => {
         return (
           <Toast action={type} variant="solid" nativeID={id}>

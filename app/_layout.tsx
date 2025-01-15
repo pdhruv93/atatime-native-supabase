@@ -6,6 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { AuthContextProvider } from "@/context/AuthContext";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -21,9 +22,11 @@ export default function RootLayout() {
 
   return (
     <GluestackUIProvider mode="light">
-      <SafeAreaView style={{ flex: 1, paddingHorizontal: 20 }}>
-        <Stack screenOptions={{ headerShown: false }} />
-      </SafeAreaView>
+      <AuthContextProvider>
+        <SafeAreaView style={{ flex: 1, paddingHorizontal: 20 }}>
+          <Stack screenOptions={{ headerShown: false }} />
+        </SafeAreaView>
+      </AuthContextProvider>
 
       <StatusBar style="auto" />
     </GluestackUIProvider>
