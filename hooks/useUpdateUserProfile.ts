@@ -14,9 +14,15 @@ export function useUpdateUserProfile() {
   const updateProfileToSupabase = async (newProfileData: Partial<User>) => {
     console.log("Uploading User profile to Supabase storage...");
     setIsLoading(true);
+
+    const updatedProfileData = {
+      ...newProfileData,
+      is_complete: Boolean(newProfileData.display_name || user?.display_name),
+    };
+
     const { error } = await supabase
       .from("user_profile")
-      .update(newProfileData)
+      .update(updatedProfileData)
       .eq("user_id", user?.user_id);
 
     if (error) {
@@ -25,7 +31,7 @@ export function useUpdateUserProfile() {
     }
 
     generateToast("profile-update", "success", "Profile Updated");
-    updateUserProfileLocally(newProfileData);
+    updateUserProfileLocally(updatedProfileData);
     setIsLoading(false);
   };
 
