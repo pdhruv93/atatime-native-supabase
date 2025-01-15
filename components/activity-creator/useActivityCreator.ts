@@ -6,11 +6,14 @@ import { supabase } from "@/utils/supabase";
 import { useShowToast } from "@/hooks/useShowToast";
 import { useUtilityStore } from "@/store/UtilityStore";
 import { useShallow } from "zustand/react/shallow";
+import { router } from "expo-router";
 
 export function useActivityCreator() {
   const { generateToast } = useShowToast();
   const [user] = useAuthStore(useShallow((s) => [s.loggedInUser]));
-  const [setIsLoading] = useUtilityStore(useShallow((s) => [s.setIsLoading]));
+  const [setIsLoading, setTypedActivity] = useUtilityStore(
+    useShallow((s) => [s.setIsLoading, s.setTypedActivity])
+  );
 
   const {
     register,
@@ -45,7 +48,9 @@ export function useActivityCreator() {
     }
 
     generateToast("activity-create", "success", "Profile Updated");
+    setTypedActivity(data.name);
     setIsLoading(false);
+    router.replace("/home");
   };
 
   return {
