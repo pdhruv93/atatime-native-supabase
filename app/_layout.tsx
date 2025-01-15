@@ -6,7 +6,8 @@ import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { AuthContextProvider } from "@/context/AuthContext";
+import { useUtilityStore } from "@/store/UtilityStore";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -15,6 +16,7 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/Montserrat-Regular.ttf"),
   });
+  const [isLoading] = useUtilityStore((s) => [s.isLoading]);
 
   if (!loaded) {
     return null;
@@ -22,11 +24,10 @@ export default function RootLayout() {
 
   return (
     <GluestackUIProvider mode="light">
-      <AuthContextProvider>
-        <SafeAreaView style={{ flex: 1, paddingHorizontal: 20 }}>
-          <Stack screenOptions={{ headerShown: false }} />
-        </SafeAreaView>
-      </AuthContextProvider>
+      <SafeAreaView style={{ flex: 1, paddingHorizontal: 20 }}>
+        <LoadingSpinner isVisible={isLoading} />
+        <Stack screenOptions={{ headerShown: false }} />
+      </SafeAreaView>
 
       <StatusBar style="auto" />
     </GluestackUIProvider>

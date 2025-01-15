@@ -1,16 +1,16 @@
-import { useState } from "react";
 import * as Location from "expo-location";
 import { Button, ButtonIcon } from "@/components/ui/button";
-import { useAuthContext } from "@/context/AuthContext";
 import { useShowToast } from "@/hooks/useShowToast";
 import { HStack } from "@/components/ui/hstack";
 import { Heading } from "@/components/ui/heading";
 import { RepeatIcon } from "@/components/ui/icon";
-import { supabase } from "@/utils/supabase";
+import { useUpdateUserProfile } from "@/hooks/useUpdateUserProfile";
+import { useAuthStore } from "@/store/AuthStore";
 
 export function UserLocation() {
-  const { loggedInUser, updateUserProfileLocally } = useAuthContext();
+  const { updateProfileToSupabase } = useUpdateUserProfile();
   const { generateToast } = useShowToast();
+  const [user] = useAuthStore((s) => [s.loggedInUser]);
 
   const getCurrentLocation = async () => {
     //used for the pop up box where we give permission to use location
@@ -36,34 +36,17 @@ export function UserLocation() {
       //loop on the response to get the actual result
       for (let item of response) {
         const locationName = item.city;
-
-        const { error } = await supabase
-          .from("user_profile")
-          .update({
-            location_name: locationName,
-            location: `POINT(${longitude} ${latitude})`,
-          })
-          .eq("user_id", loggedInUser?.user_id);
-
-        if (error) {
-          generateToast("location", "error", error.message);
-          return;
-        }
-
-        updateUserProfileLocally({
+        updateProfileToSupabase({
           location_name: locationName,
           location: `POINT(${longitude} ${latitude})`,
         });
-        generateToast("location", "success", "Location Updated");
       }
     }
   };
 
   return (
     <HStack className="items-center">
-      <Heading size="sm">
-        {loggedInUser?.location_name || "No location"}
-      </Heading>
+      <Heading size="sm">{user?.location_name || "No location"}</Heading>
 
       <Button
         size="xs"

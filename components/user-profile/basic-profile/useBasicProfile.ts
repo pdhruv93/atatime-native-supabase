@@ -1,13 +1,12 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FormInputs, formSchema } from "./formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { supabase } from "@/utils/supabase";
-import { useShowToast } from "@/hooks/useShowToast";
-import { useAuthContext } from "@/context/AuthContext";
+import { useAuthStore } from "@/store/AuthStore";
+import { useUpdateUserProfile } from "@/hooks/useUpdateUserProfile";
 
 export function useBasicProfile() {
-  const { generateToast } = useShowToast();
-  const { loggedInUser: user, updateUserProfileLocally } = useAuthContext();
+  const { updateProfileToSupabase } = useUpdateUserProfile();
+  const [user] = useAuthStore((s) => [s.loggedInUser]);
   const {
     register,
     handleSubmit,
@@ -19,38 +18,15 @@ export function useBasicProfile() {
       displayName: user?.display_name ?? undefined,
       bio: user?.bio ?? undefined,
       age: user?.age ?? undefined,
-      whatsappNumber: user?.whatsapp_number ?? undefined,
-      instagramHandle: user?.instagram_handle ?? undefined,
     },
   });
 
   const onFormSubmit: SubmitHandler<FormInputs> = async (data) => {
-    const isProfileComplete =
-      !!data.displayName &&
-      !!user?.location_name &&
-      (!!data.instagramHandle || !!data.whatsappNumber);
-
-    const newProfileData = {
+    updateProfileToSupabase({
       display_name: data.displayName,
       age: data.age,
       bio: data.bio,
-      whatsapp_number: data.whatsappNumber,
-      instagram_handle: data.instagramHandle,
-      is_complete: isProfileComplete,
-    };
-
-    const { error } = await supabase
-      .from("user_profile")
-      .update(newProfileData)
-      .eq("user_id", user?.user_id);
-
-    if (error) {
-      generateToast("profile-update", "error", error.message);
-      return;
-    }
-
-    generateToast("profile-update", "success", "Profile Updated");
-    updateUserProfileLocally(newProfileData);
+    });
   };
 
   return { register, errors, handleSubmit, onFormSubmit, control };

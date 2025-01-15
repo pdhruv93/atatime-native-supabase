@@ -4,10 +4,10 @@ import { VStack } from "@/components/ui/vstack";
 import { UserAvatar } from "@/components/user-profile";
 import { Box } from "@/components/ui/box";
 import { router } from "expo-router";
-import { useAuthContext } from "@/context/AuthContext";
+import { useAuthStore } from "@/store/AuthStore";
 
 export default function Home() {
-  const { signOut } = useAuthContext();
+  const [signOut] = useAuthStore((s) => [s.signOut]);
 
   return (
     <VStack space="4xl" className="h-full bg-white">

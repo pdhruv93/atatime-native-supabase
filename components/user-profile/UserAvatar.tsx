@@ -3,7 +3,7 @@ import {
   AvatarFallbackText,
   AvatarImage,
 } from "@/components/ui/avatar";
-import { useAuthContext } from "@/context/AuthContext";
+import { useAuthStore } from "@/store/AuthStore";
 import { getPublicUrl } from "@/utils/getPublicUrl";
 import { Pressable } from "react-native";
 
@@ -13,13 +13,13 @@ interface UserAvatarProps {
 }
 
 export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
-  const { loggedInUser } = useAuthContext();
-  const profileImageUrl = getPublicUrl(loggedInUser?.profile_picture);
+  const [user] = useAuthStore((s) => [s.loggedInUser]);
+  const profileImageUrl = getPublicUrl(user?.profile_picture);
 
   return (
     <Pressable onPress={onPress}>
       <Avatar size={size}>
-        <AvatarFallbackText>{loggedInUser?.display_name}</AvatarFallbackText>
+        <AvatarFallbackText>{user?.display_name}</AvatarFallbackText>
         <AvatarImage
           source={{
             uri: profileImageUrl,
