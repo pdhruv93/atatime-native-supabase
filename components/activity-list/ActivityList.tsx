@@ -3,6 +3,12 @@ import { Box } from "@/components/ui/box";
 import { Card } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
+import {
+  Avatar,
+  AvatarFallbackText,
+  AvatarImage,
+} from "@/components/ui/avatar";
+import { Pressable } from "react-native";
 
 export function ActivityList() {
   const { activities } = useActivityList();
