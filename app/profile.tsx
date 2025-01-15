@@ -17,7 +17,7 @@ export default function Profile() {
   );
 
   return (
-    <VStack space="4xl" className="h-full bg-white">
+    <VStack space="4xl" className="h-full bg-black">
       <VStack space="xs" className="items-center">
         <Button
           size="lg"
