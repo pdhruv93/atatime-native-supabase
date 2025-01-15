@@ -9,6 +9,16 @@ I first tried with Google Firestore, its a good solution but the major challenge
 - Since its a No-SQL approach, creating references between collection was a problem. With Supabase its a Postgres DB, so things are sorted.
 - Since the app relies too much on the location data and Geo computation, it was hard perform any filtering for the Geo data. With Supabase+PostGis this becomes quite easy.
 
+## Why only email login
+
+I know @@time is a social app, and why do it only support email chats and not any other social media login?
+
+Supabase has inbuilt integration of generating and sending Verification Emails(containing Magic Links) to the specified email. Whatsapp needs Business API for signups, even Twilio does same behind the scenes which incurs cost.
+
+One workaround was to get the device's phone number automatically and use it as a login method and allow users to connect over Whatsapp using the same mobile number. But getting the device number automatically is blocked due to security concerns.
+
+Thats why the initial version only supports email based auth and chats. But the approach for generating Magic Links/OTP remains same and in future might be extended to other social media logins.
+
 ## How to get this app working for you
 
 The app is not published to any store yet and has to be complied and run locally
