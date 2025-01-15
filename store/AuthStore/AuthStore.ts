@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { type AuthStoreProps, type AuthStore } from "./types";
 import { supabase } from "@/utils/supabase";
+
 import { defaultUserProfile } from "./defaultUser";
 
 const defaultProps: AuthStoreProps = {

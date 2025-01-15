@@ -1,14 +1,14 @@
 import { Modal, ModalBackdrop, ModalContent } from "@/components/ui/modal";
 import { Spinner } from "@/components/ui/spinner";
 import { Center } from "@/components/ui/center";
+import { useUtilityStore } from "@/store/UtilityStore";
+import { useShallow } from "zustand/react/shallow";
 
-interface LoadingSpinnerProps {
-  isVisible?: boolean;
-}
+export function LoadingSpinner() {
+  const [isLoading] = useUtilityStore(useShallow((s) => [s.isLoading]));
 
-export function LoadingSpinner({ isVisible = false }: LoadingSpinnerProps) {
   return (
-    <Modal isOpen={isVisible} size="full">
+    <Modal isOpen={isLoading} size="full">
       <ModalBackdrop />
       <Center>
         <ModalContent className="bg-transparent border-0">

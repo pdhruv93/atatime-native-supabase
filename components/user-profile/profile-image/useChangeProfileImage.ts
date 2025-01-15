@@ -15,7 +15,10 @@ export function useChangeProfileImage() {
   const [setIsLoading] = useUtilityStore(useShallow((s) => [s.setIsLoading]));
 
   const pickAndUploadImage = async () => {
-    setIsLoading(true);
+    if (!user) {
+      return;
+    }
+
     try {
       // No permissions request is necessary for launching the image library
       let result = await launchImageLibraryAsync({
@@ -33,7 +36,7 @@ export function useChangeProfileImage() {
       console.log("Found valid file, preapring upload...");
       const filePath = result.assets[0].uri;
       const fileExt = filePath.split(".").pop();
-      const fileName = `${user}.${fileExt}`;
+      const fileName = `${user.user_id}.${fileExt}`;
 
       // Read the file as a Base64-encoded string using Expo's FileSystem
       const base64 = await FileSystem.readAsStringAsync(filePath, {
@@ -55,7 +58,10 @@ export function useChangeProfileImage() {
         return;
       }
 
-      updateProfileToSupabase({ profile_picture: fileName });
+      updateProfileToSupabase({
+        profile_picture: fileName,
+        profile_picture_local_path: filePath,
+      });
     } catch (e) {
       console.error(e);
     } finally {

@@ -21,6 +21,7 @@ export type Database = {
           location_name: string | null
           preferences: Json | null
           profile_picture: string | null
+          profile_picture_local_path: string | null
           user_id: string
         }
         Insert: {
@@ -34,6 +35,7 @@ export type Database = {
           location_name?: string | null
           preferences?: Json | null
           profile_picture?: string | null
+          profile_picture_local_path?: string | null
           user_id: string
         }
         Update: {
@@ -47,6 +49,7 @@ export type Database = {
           location_name?: string | null
           preferences?: Json | null
           profile_picture?: string | null
+          profile_picture_local_path?: string | null
           user_id?: string
         }
         Relationships: []

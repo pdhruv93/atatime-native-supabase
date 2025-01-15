@@ -15,7 +15,8 @@ interface UserAvatarProps {
 
 export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
   const [user] = useAuthStore(useShallow((s) => [s.loggedInUser]));
-  const profileImageUrl = getPublicUrl(user?.profile_picture);
+  const profileImageUrl =
+    user?.profile_picture_local_path || getPublicUrl(user?.profile_picture);
 
   return (
     <Pressable onPress={onPress}>
