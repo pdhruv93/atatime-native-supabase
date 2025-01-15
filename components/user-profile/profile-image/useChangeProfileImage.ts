@@ -6,12 +6,13 @@ import * as FileSystem from "expo-file-system";
 import { useUpdateUserProfile } from "@/hooks/useUpdateUserProfile";
 import { useAuthStore } from "@/store/AuthStore";
 import { useUtilityStore } from "@/store/UtilityStore";
+import { useShallow } from "zustand/react/shallow";
 
 export function useChangeProfileImage() {
   const { updateProfileToSupabase } = useUpdateUserProfile();
   const { generateToast } = useShowToast();
-  const [user] = useAuthStore((s) => [s.loggedInUser]);
-  const [setIsLoading] = useUtilityStore((s) => [s.setIsLoading]);
+  const [user] = useAuthStore(useShallow((s) => [s.loggedInUser]));
+  const [setIsLoading] = useUtilityStore(useShallow((s) => [s.setIsLoading]));
 
   const pickAndUploadImage = async () => {
     setIsLoading(true);

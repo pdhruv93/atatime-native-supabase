@@ -5,9 +5,10 @@ import { UserAvatar } from "@/components/user-profile";
 import { Box } from "@/components/ui/box";
 import { router } from "expo-router";
 import { useAuthStore } from "@/store/AuthStore";
+import { useShallow } from "zustand/react/shallow";
 
 export default function Home() {
-  const [signOut] = useAuthStore((s) => [s.signOut]);
+  const [signOut] = useAuthStore(useShallow((s) => [s.signOut]));
 
   return (
     <VStack space="4xl" className="h-full bg-white">

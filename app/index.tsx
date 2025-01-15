@@ -6,15 +6,16 @@ import { useUtilityStore } from "@/store/UtilityStore";
 import { supabase } from "@/utils/supabase";
 import { SplashScreen, router } from "expo-router";
 import { createSessionFromUrl } from "@/utils/createSessionFromUrl";
+import { useShallow } from "zustand/react/shallow";
 
 export default function App() {
   const url = Linking.useURL();
   const { generateToast } = useShowToast();
 
-  const [setIsLoading] = useUtilityStore((s) => [s.setIsLoading]);
-  const [updateUserProfileLocally] = useAuthStore((s) => [
-    s.updateUserProfileLocally,
-  ]);
+  const [setIsLoading] = useUtilityStore(useShallow((s) => [s.setIsLoading]));
+  const [updateUserProfileLocally] = useAuthStore(
+    useShallow((s) => [s.updateUserProfileLocally])
+  );
 
   const onErrorHandler = () => {
     updateUserProfileLocally(null);

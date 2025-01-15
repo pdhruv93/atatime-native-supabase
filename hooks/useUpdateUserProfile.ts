@@ -2,14 +2,14 @@ import { useAuthStore, type User } from "@/store/AuthStore";
 import { supabase } from "@/utils/supabase";
 import { useShowToast } from "./useShowToast";
 import { useUtilityStore } from "@/store/UtilityStore";
+import { useShallow } from "zustand/react/shallow";
 
 export function useUpdateUserProfile() {
   const { generateToast } = useShowToast();
-  const [user, updateUserProfileLocally] = useAuthStore((s) => [
-    s.loggedInUser,
-    s.updateUserProfileLocally,
-  ]);
-  const [setIsLoading] = useUtilityStore((s) => [s.setIsLoading]);
+  const [user, updateUserProfileLocally] = useAuthStore(
+    useShallow((s) => [s.loggedInUser, s.updateUserProfileLocally])
+  );
+  const [setIsLoading] = useUtilityStore(useShallow((s) => [s.setIsLoading]));
 
   const updateProfileToSupabase = async (newProfileData: Partial<User>) => {
     console.log("Uploading User profile to Supabase storage...");

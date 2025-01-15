@@ -6,11 +6,12 @@ import { Heading } from "@/components/ui/heading";
 import { RepeatIcon } from "@/components/ui/icon";
 import { useUpdateUserProfile } from "@/hooks/useUpdateUserProfile";
 import { useAuthStore } from "@/store/AuthStore";
+import { useShallow } from "zustand/react/shallow";
 
 export function UserLocation() {
   const { updateProfileToSupabase } = useUpdateUserProfile();
   const { generateToast } = useShowToast();
-  const [user] = useAuthStore((s) => [s.loggedInUser]);
+  const [user] = useAuthStore(useShallow((s) => [s.loggedInUser]));
 
   const getCurrentLocation = async () => {
     //used for the pop up box where we give permission to use location

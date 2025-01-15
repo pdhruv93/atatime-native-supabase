@@ -3,10 +3,11 @@ import { FormInputs, formSchema } from "./formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuthStore } from "@/store/AuthStore";
 import { useUpdateUserProfile } from "@/hooks/useUpdateUserProfile";
+import { useShallow } from "zustand/react/shallow";
 
 export function useBasicProfile() {
   const { updateProfileToSupabase } = useUpdateUserProfile();
-  const [user] = useAuthStore((s) => [s.loggedInUser]);
+  const [user] = useAuthStore(useShallow((s) => [s.loggedInUser]));
   const {
     register,
     handleSubmit,

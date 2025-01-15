@@ -9,9 +9,10 @@ import {
 } from "@/components/user-profile";
 import { router } from "expo-router";
 import { useAuthStore } from "@/store/AuthStore";
+import { useShallow } from "zustand/react/shallow";
 
 export default function Profile() {
-  const [user] = useAuthStore((s) => [s.loggedInUser]);
+  const [user] = useAuthStore(useShallow((s) => [s.loggedInUser]));
 
   return (
     <VStack space="4xl" className="h-full bg-white">

@@ -8,6 +8,7 @@ import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useUtilityStore } from "@/store/UtilityStore";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
+import { useShallow } from "zustand/react/shallow";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -16,7 +17,7 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/Montserrat-Regular.ttf"),
   });
-  const [isLoading] = useUtilityStore((s) => [s.isLoading]);
+  const [isLoading] = useUtilityStore(useShallow((s) => [s.isLoading]));
 
   if (!loaded) {
     return null;

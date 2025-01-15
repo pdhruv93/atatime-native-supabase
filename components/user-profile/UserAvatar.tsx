@@ -6,6 +6,7 @@ import {
 import { useAuthStore } from "@/store/AuthStore";
 import { getPublicUrl } from "@/utils/getPublicUrl";
 import { Pressable } from "react-native";
+import { useShallow } from "zustand/react/shallow";
 
 interface UserAvatarProps {
   size?: "md" | "sm" | "lg" | "xl" | "2xl" | "xs" | undefined;
@@ -13,7 +14,7 @@ interface UserAvatarProps {
 }
 
 export function UserAvatar({ size = "md", onPress }: UserAvatarProps) {
-  const [user] = useAuthStore((s) => [s.loggedInUser]);
+  const [user] = useAuthStore(useShallow((s) => [s.loggedInUser]));
   const profileImageUrl = getPublicUrl(user?.profile_picture);
 
   return (
