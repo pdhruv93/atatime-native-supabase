@@ -1,4 +1,4 @@
-import { Button, ButtonIcon } from "@/components/ui/button";
+import { Button, ButtonIcon, ButtonText } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { ChevronsLeftIcon } from "@/components/ui/icon";
 import { VStack } from "@/components/ui/vstack";
@@ -12,16 +12,18 @@ import { useAuthStore } from "@/store/AuthStore";
 import { useShallow } from "zustand/react/shallow";
 
 export default function Profile() {
-  const [user] = useAuthStore(useShallow((s) => [s.loggedInUser]));
+  const [user, signOut] = useAuthStore(
+    useShallow((s) => [s.loggedInUser, s.signOut])
+  );
 
   return (
-    <VStack space="4xl" className="h-full bg-white">
+    <VStack space="4xl" className="h-full bg-black">
       <VStack space="xs" className="items-center">
         <Button
           size="lg"
           className="rounded-full p-3.5 self-start"
           variant="outline"
-          onPress={() => router.push("/home")}
+          onPress={() => router.replace("/home")}
         >
           <ButtonIcon as={ChevronsLeftIcon} />
         </Button>
@@ -35,6 +37,15 @@ export default function Profile() {
       <VStack space="md">
         <Heading size="xl">Basic Profile</Heading>
         <BasicProfileForm />
+
+        <Button
+          size="xl"
+          variant="outline"
+          className="border-red-300"
+          onPress={signOut}
+        >
+          <ButtonText>Signout</ButtonText>
+        </Button>
       </VStack>
     </VStack>
   );

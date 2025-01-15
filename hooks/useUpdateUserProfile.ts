@@ -1,6 +1,6 @@
 import { useAuthStore, type User } from "@/store/AuthStore";
 import { supabase } from "@/utils/supabase";
-import { useShowToast } from "./useShowToast";
+import { useShowToast } from "@/hooks/useShowToast";
 import { useUtilityStore } from "@/store/UtilityStore";
 import { useShallow } from "zustand/react/shallow";
 
@@ -14,18 +14,25 @@ export function useUpdateUserProfile() {
   const updateProfileToSupabase = async (newProfileData: Partial<User>) => {
     console.log("Uploading User profile to Supabase storage...");
     setIsLoading(true);
+
+    const updatedProfileData = {
+      ...newProfileData,
+      is_complete: Boolean(newProfileData.display_name || user?.display_name),
+    };
+
     const { error } = await supabase
       .from("user_profile")
-      .update(newProfileData)
+      .update(updatedProfileData)
       .eq("user_id", user?.user_id);
 
     if (error) {
       generateToast("profile-update", "error", error.message);
+      setIsLoading(false);
       return;
     }
 
     generateToast("profile-update", "success", "Profile Updated");
-    updateUserProfileLocally(newProfileData);
+    updateUserProfileLocally(updatedProfileData);
     setIsLoading(false);
   };
 

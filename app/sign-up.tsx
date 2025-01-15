@@ -5,7 +5,7 @@ import { VStack } from "@/components/ui/vstack";
 
 export default function SignUp() {
   return (
-    <Center className="bg-white h-full">
+    <Center className="bg-black h-full">
       <VStack space="4xl" className="w-full justify-center">
         <VStack>
           <Heading size="4xl">@@time</Heading>
