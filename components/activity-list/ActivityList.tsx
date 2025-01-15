@@ -15,7 +15,9 @@ export function ActivityList() {
             {activity.name}
           </Heading>
 
-          <Text size="sm">Start building your next project in minutes</Text>
+          {activity.description ? (
+            <Text size="sm">{activity.description}</Text>
+          ) : null}
         </Card>
       ))}
     </Box>
