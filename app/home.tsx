@@ -1,5 +1,4 @@
 import { Text } from "react-native";
-import { Button, ButtonText } from "@/components/ui/button";
 import { VStack } from "@/components/ui/vstack";
 import { UserAvatar } from "@/components/user-profile";
 import { Box } from "@/components/ui/box";
@@ -17,10 +16,6 @@ export default function Home() {
       </Box>
 
       <Text>Main body of app</Text>
-
-      <Button size="xl" variant="solid" action="primary" onPress={signOut}>
-        <ButtonText>Signout</ButtonText>
-      </Button>
     </VStack>
   );
 }
