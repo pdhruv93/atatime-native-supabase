@@ -1,6 +1,6 @@
 import { useAuthStore, type User } from "@/store/AuthStore";
 import { supabase } from "@/utils/supabase";
-import { useShowToast } from "./useShowToast";
+import { useShowToast } from "@/hooks/useShowToast";
 import { useUtilityStore } from "@/store/UtilityStore";
 import { useShallow } from "zustand/react/shallow";
 

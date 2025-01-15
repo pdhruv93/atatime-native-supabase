@@ -5,6 +5,7 @@ import { router } from "expo-router";
 import { HStack } from "@/components/ui/hstack";
 import { Heading } from "@/components/ui/heading";
 import { ActivityCreator } from "@/components/activity-creator";
+import { ActivityList } from "@/components/activity-list";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         </Box>
       </HStack>
 
+      <ActivityList />
       <ActivityCreator />
     </VStack>
   );
