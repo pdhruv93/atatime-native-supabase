@@ -27,6 +27,7 @@ export function useUpdateUserProfile() {
 
     if (error) {
       generateToast("profile-update", "error", error.message);
+      setIsLoading(false);
       return;
     }
 

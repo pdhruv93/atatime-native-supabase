@@ -30,7 +30,6 @@ export function useActivityCreator() {
       return;
     }
 
-    console.log("Uploading User profile to Supabase storage...");
     setIsLoading(true);
 
     const { error } = await supabase.from("activities").insert({
@@ -41,6 +40,7 @@ export function useActivityCreator() {
 
     if (error) {
       generateToast("activity-create", "error", error.message);
+      setIsLoading(false);
       return;
     }
 
