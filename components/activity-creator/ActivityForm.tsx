@@ -24,7 +24,7 @@ export function ActivityForm() {
           <FormControl isInvalid={!!errors.name}>
             <Input size="xl" isInvalid={!!errors.name}>
               <InputField
-                placeholder="Your Name"
+                placeholder="what are you doing? i'm"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -49,7 +49,7 @@ export function ActivityForm() {
           <FormControl isInvalid={!!errors.description}>
             <Textarea size="xl" isInvalid={!!errors.description}>
               <TextareaInput
-                placeholder="Let people know you"
+                placeholder="more about this activity. this is optional :)"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}

@@ -23,7 +23,7 @@ export default function Profile() {
           size="lg"
           className="rounded-full p-3.5 self-start"
           variant="outline"
-          onPress={() => router.push("/home")}
+          onPress={() => router.replace("/home")}
         >
           <ButtonIcon as={ChevronsLeftIcon} />
         </Button>

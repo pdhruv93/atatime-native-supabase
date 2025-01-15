@@ -6,12 +6,9 @@ import { supabase } from "@/utils/supabase";
 import { useShowToast } from "@/hooks/useShowToast";
 import { useUtilityStore } from "@/store/UtilityStore";
 import { useShallow } from "zustand/react/shallow";
-import { useState } from "react";
 
 export function useActivityCreator() {
   const { generateToast } = useShowToast();
-  const [showModal, setShowModal] = useState(false);
-
   const [user] = useAuthStore(useShallow((s) => [s.loggedInUser]));
   const [setIsLoading] = useUtilityStore(useShallow((s) => [s.setIsLoading]));
 
@@ -57,7 +54,5 @@ export function useActivityCreator() {
     handleSubmit,
     onFormSubmit,
     control,
-    showModal,
-    setShowModal,
   };
 }

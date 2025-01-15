@@ -14,7 +14,7 @@ export default function Home() {
         <Heading size="2xl">@@time</Heading>
 
         <Box className="items-end">
-          <UserAvatar onPress={() => router.push("/profile")} />
+          <UserAvatar onPress={() => router.replace("/profile")} />
         </Box>
       </HStack>
 
