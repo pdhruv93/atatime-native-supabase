@@ -1,6 +1,16 @@
 # atatime(@@time) Expo app
 
-This app has been created using Expo and [Supabase](https://supabase.com/). Supabase is a backend as a service.
+## Idea
+
+On a Wednesday night traveling by cab, I felt how many people would be doing the same activity as me at the same time. That's when I started implementing @@time(at a time).
+
+@@time is a simple application that lets users mark their current activity and then check the list of other users doing the same activity at that time around the world.
+
+## Tech Stack used
+
+- **Frontend:** Expo+React-Natie wih and TypeScipt, [GlueStack UI](https://gluestack.io/)
+- **Backend:** [Supabase](https://supabase.com/) with Postgres(DB functions, Triggers)
+- **Other:** Zustand for Global state mgmnt, React Hook Form+Zod
 
 # Why Supabase
 
@@ -18,12 +28,6 @@ Supabase has inbuilt integration of generating and sending Verification Emails(c
 One workaround was to get the device's phone number automatically and use it as a login method and allow users to connect over Whatsapp using the same mobile number. But getting the device number automatically is blocked due to security concerns.
 
 Thats why the initial version only supports email based auth and chats. But the approach for generating Magic Links/OTP remains same and in future might be extended to other social media logins.
-
-## Tech Stack used
-
-- **Frontend:** Expo+React-Natie wih and TypeScipt, [GlueStack UI](https://gluestack.io/)
-- **Backend:** [Supabase](https://supabase.com/) with Postgres(DB functions, Triggers)
-- **Other:** Zustand for Global state mgmnt, React Hook Form+Zod
 
 ## Screenshots
 
