@@ -33,7 +33,7 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 ### Onboarding screen
 
-<img src="./screenshots/Onboarding_Screen.png" height="100">
+<img src="./screenshots/Onboarding_Screen.png" height="500">
 
 ### Signup screen
 
