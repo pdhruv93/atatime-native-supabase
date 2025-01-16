@@ -8,7 +8,6 @@ import { useAuthStore } from "@/store/AuthStore";
 
 export function useActivityList() {
   const { generateToast } = useShowToast();
-  const [showUserDetails, setShowUserDetails] = useState(false);
   const [similarActivities, setSimilarActivities] = useState<
     ActivityWithUserDetails[]
   >([]);
@@ -46,12 +45,10 @@ export function useActivityList() {
     selectedActivity: ActivityWithUserDetails
   ) => {
     setSelectedActivity(selectedActivity);
-    setShowUserDetails(true);
   };
 
   const closeUserDetails = () => {
     setSelectedActivity(null);
-    setShowUserDetails(false);
   };
 
   return {
