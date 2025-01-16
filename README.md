@@ -27,40 +27,45 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 ## Screenshots
 
-# Supabase Dashboard
+### Supabase Dashboard
 
 <img src="./screenshots/Supabase_Dashboard.png" height="30%">
 
-# Onboarding screen
+### Onboarding screen
 
-![|10](./screenshots/Onboarding_Screen.png)
+<img src="./screenshots/Onboarding_Screen.png" height="30%">
 
-# Signup screen
+### Signup screen
 
-![plot](./screenshots/Signup_Screen.png)
+<img src="./screenshots/Signup_Screen.png" height="30%">
 
-# Magic Link on mail
+### Magic Link on mail
 
-![plot](./screenshots/Magic_Link_on_mail.png)
+<img src="./screenshots/Magic_Link_on_mail.png" height="30%">
 
-# Home Screen
+### Home Screen
 
+<img src="./screenshots/Supabase_Dashboard.png" height="30%">
 ![plot](./screenshots/Home_Screen.png)
 
-# Profile Screen
+### Profile Screen
 
+<img src="./screenshots/Supabase_Dashboard.png" height="30%">
 ![plot](./screenshots/Profile_Screen.png)
 
-# Activity Create Screen
+### Activity Create Screen
 
+<img src="./screenshots/Supabase_Dashboard.png" height="30%">
 ![plot](./screenshots/Activity_Create_Screen.png)
 
-# Zod Validations
+### Zod Validations
 
+<img src="./screenshots/Supabase_Dashboard.png" height="30%">
 ![plot](./screenshots/Zod_Validations.png)
 
-# Chat Option
+### Chat Option
 
+<img src="./screenshots/Supabase_Dashboard.png" height="30%">
 ![plot](./screenshots/Chat_Option.png)
 
 ## How to get this app working for you
