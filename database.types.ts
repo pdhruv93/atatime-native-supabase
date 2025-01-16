@@ -108,6 +108,7 @@ export type Database = {
           location_name: string
           profile_picture: string
           is_complete: boolean
+          user_email: string
           distance: number
         }[]
       }

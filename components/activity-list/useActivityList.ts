@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { type Activity } from "./types";
+import { type ActivityWithUserDetails } from "./types";
 import { useUtilityStore } from "@/store/UtilityStore";
 import { useShallow } from "zustand/react/shallow";
 import { supabase } from "@/utils/supabase";
@@ -8,7 +8,13 @@ import { useAuthStore } from "@/store/AuthStore";
 
 export function useActivityList() {
   const { generateToast } = useShowToast();
-  const [activities, setActivities] = useState<Activity[]>([]);
+  const [showUserDetails, setShowUserDetails] = useState(false);
+  const [similarActivities, setSimilarActivities] = useState<
+    ActivityWithUserDetails[]
+  >([]);
+  const [selectedActivity, setSelectedActivity] =
+    useState<ActivityWithUserDetails | null>(null);
+
   const [user] = useAuthStore(useShallow((s) => [s.loggedInUser]));
   const [typedActivity, setIsLoading] = useUtilityStore(
     useShallow((s) => [s.typedActivity, s.setIsLoading])
@@ -29,12 +35,29 @@ export function useActivityList() {
         return [];
       }
 
-      setActivities(data);
+      setSimilarActivities(data);
       setIsLoading(false);
     };
 
     fetchActivities();
   }, [typedActivity]);
 
-  return { activities };
+  const openUserDetailsForActivity = (
+    selectedActivity: ActivityWithUserDetails
+  ) => {
+    setSelectedActivity(selectedActivity);
+    setShowUserDetails(true);
+  };
+
+  const closeUserDetails = () => {
+    setSelectedActivity(null);
+    setShowUserDetails(false);
+  };
+
+  return {
+    similarActivities,
+    selectedActivity,
+    openUserDetailsForActivity,
+    closeUserDetails,
+  };
 }
