@@ -37,31 +37,31 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 ### Signup screen
 
-<img src="./screenshots/Signup_Screen.png" height="30%">
+<img src="./screenshots/Signup_Screen.png" height="500">
 
 ### Magic Link on mail
 
-<img src="./screenshots/Magic_Link_on_mail.png" height="30%">
+<img src="./screenshots/Magic_Link_on_mail.png" height="500">
 
 ### Home Screen
 
-<img src="./screenshots/Home_Screen.png" height="30%">
+<img src="./screenshots/Home_Screen.png" height="500">
 
 ### Profile Screen
 
-<img src="./screenshots/Profile_Screen.png" height="30%">
+<img src="./screenshots/Profile_Screen.png" height="500">
 
 ### Activity Create Screen
 
-<img src="./screenshots/Activity_Create_Screen.png" height="30%">
+<img src="./screenshots/Activity_Create_Screen.png" height="500">
 
 ### Zod Validations
 
-<img src="./screenshots/Zod_Validations.png" height="30%">
+<img src="./screenshots/Zod_Validations.png" height="500">
 
 ### Chat Option
 
-<img src="./screenshots/Chat_Option.png" height="30%">
+<img src="./screenshots/Chat_Option.png" height="500">
 
 ## How to get this app working for you
 
