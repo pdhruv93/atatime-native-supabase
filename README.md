@@ -33,6 +33,8 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 ### App Screenshots
 
+#### Hover over the image to see the details
+
 <img src="./screenshots/Onboarding_Screen.png" title="Onboarding screen" height="500"> <img src="./screenshots/Signup_Screen.png" title="Signup screen" height="500"> <img src="./screenshots/Home_Screen.png" title="Home Screen" height="500"> <img src="./screenshots/Profile_Screen.png" title="Profile Screen" height="500"> <img src="./screenshots/Activity_Create_Screen.png" title="Activity Create Screen" height="500"> <img src="./screenshots/Zod_Validations.png" title="Zod Validations" height="500"> <img src="./screenshots/Chat_Option.png" title="Chat Option" height="500">
 
 ### Magic Link Email
