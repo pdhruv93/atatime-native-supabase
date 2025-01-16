@@ -11,6 +11,8 @@ import { VStack } from "@/components/ui/vstack";
 import { Button, ButtonText } from "@/components/ui/button";
 import * as Linking from "expo-linking";
 import { UserAvatar } from "./UserAvatar";
+import { Alert, AlertIcon, AlertText } from "@/components/ui/alert";
+import { InfoIcon } from "@/components/ui/icon";
 
 interface UserDetailProps {
   selectedActivity: ActivityWithUserDetails | null;
@@ -57,6 +59,14 @@ export function UserDetail({ selectedActivity, onClose }: UserDetailProps) {
               <Heading size="2xl">{selectedActivity?.user_bio}</Heading>
             ) : null}
           </VStack>
+
+          <Alert action="warning" variant="solid">
+            <AlertIcon as={InfoIcon} />
+            <AlertText>
+              Follow your conscience. Do not share any personal or financial
+              details over chat
+            </AlertText>
+          </Alert>
 
           {selectedActivity?.user_email ? (
             <Button
