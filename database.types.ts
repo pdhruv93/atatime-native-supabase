@@ -17,6 +17,7 @@ export type Database = {
           id: number
           name: string | null
           users_pool: string[] | null
+          visible_until: string | null
         }
         Insert: {
           created_at?: string
@@ -25,6 +26,7 @@ export type Database = {
           id?: number
           name?: string | null
           users_pool?: string[] | null
+          visible_until?: string | null
         }
         Update: {
           created_at?: string
@@ -33,6 +35,7 @@ export type Database = {
           id?: number
           name?: string | null
           users_pool?: string[] | null
+          visible_until?: string | null
         }
         Relationships: []
       }
@@ -86,7 +89,28 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_activities: {
+        Args: {
+          logged_in_user_id: string
+          search_activity_text: string
+          base_location: unknown
+        }
+        Returns: {
+          activity_id: number
+          created_at: string
+          created_by: string
+          activity_name: string
+          activity_description: string
+          user_display_name: string
+          user_bio: string
+          user_age: number
+          user_location: unknown
+          location_name: string
+          profile_picture: string
+          is_complete: boolean
+          distance: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never

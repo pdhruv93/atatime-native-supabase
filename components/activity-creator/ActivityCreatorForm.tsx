@@ -12,7 +12,7 @@ import {
 import { AlertCircleIcon } from "@/components/ui/icon";
 import { Controller } from "react-hook-form";
 
-export function ActivityForm() {
+export function ActivityCreatorForm() {
   const { errors, handleSubmit, onFormSubmit, control } = useActivityCreator();
 
   return (
@@ -61,6 +61,31 @@ export function ActivityForm() {
 
               <FormControlErrorText>
                 {errors.description && errors.description.message}
+              </FormControlErrorText>
+            </FormControlError>
+          </FormControl>
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="visibleFor"
+        render={({ field: { onChange, onBlur, value } }) => (
+          <FormControl isInvalid={!!errors.visibleFor}>
+            <Input size="xl" isInvalid={!!errors.visibleFor}>
+              <InputField
+                placeholder="Visible for(1-7) days"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value?.toString()}
+              />
+            </Input>
+
+            <FormControlError>
+              <FormControlErrorIcon as={AlertCircleIcon} />
+
+              <FormControlErrorText>
+                {errors.visibleFor && errors.visibleFor.message}
               </FormControlErrorText>
             </FormControlError>
           </FormControl>
