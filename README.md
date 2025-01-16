@@ -19,6 +19,44 @@ One workaround was to get the device's phone number automatically and use it as 
 
 Thats why the initial version only supports email based auth and chats. But the approach for generating Magic Links/OTP remains same and in future might be extended to other social media logins.
 
+## Screenshots
+
+# Supabase Dashboard
+
+![plot](./screenshots/Supabase Dashboard.png)
+
+# Onboarding screen
+
+![plot](./screenshots/Onboarding screen.png)
+
+# Signup screen
+
+![plot](./screenshots/Signup screen.png)
+
+# Magic Link on mail
+
+![plot](./screenshots/Magic Link on mail.png)
+
+# Home Screen
+
+![plot](./screenshots/Home Screen.png)
+
+# Profile Screen
+
+![plot](./screenshots/Profile Screen.png)
+
+# Activity Create Screen
+
+![plot](./screenshots/Activity Create Screen.png)
+
+# Zod Validations
+
+![plot](./screenshots/Zod Validations.png)
+
+# Chat Option 13.35.02
+
+![plot](./screenshots/Chat Option.png)
+
 ## How to get this app working for you
 
 The app is not published to any store yet and has to be complied and run locally
