@@ -16,7 +16,12 @@ export function ActivityList() {
   return (
     <Box>
       {activities.map((activity, index) => (
-        <Card size="lg" variant="filled" className="m-3">
+        <Card
+          key={`activity-${activity.id}`}
+          size="lg"
+          variant="filled"
+          className="m-3"
+        >
           <Heading size="md" className="mb-1">
             {activity.name}
           </Heading>
