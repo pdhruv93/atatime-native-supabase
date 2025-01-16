@@ -33,7 +33,7 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 ### Onboarding screen
 
-<img src="./screenshots/Onboarding_Screen.png" height="30%">
+<img src="./screenshots/Onboarding_Screen.png" height="10%">
 
 ### Signup screen
 
@@ -45,28 +45,23 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 ### Home Screen
 
-<img src="./screenshots/Supabase_Dashboard.png" height="30%">
-![plot](./screenshots/Home_Screen.png)
+<img src="./screenshots/Home_Screen.png" height="30%">
 
 ### Profile Screen
 
-<img src="./screenshots/Supabase_Dashboard.png" height="30%">
-![plot](./screenshots/Profile_Screen.png)
+<img src="./screenshots/Profile_Screen.png" height="30%">
 
 ### Activity Create Screen
 
-<img src="./screenshots/Supabase_Dashboard.png" height="30%">
-![plot](./screenshots/Activity_Create_Screen.png)
+<img src="./screenshots/Activity_Create_Screen.png" height="30%">
 
 ### Zod Validations
 
-<img src="./screenshots/Supabase_Dashboard.png" height="30%">
-![plot](./screenshots/Zod_Validations.png)
+<img src="./screenshots/Zod_Validations.png" height="30%">
 
 ### Chat Option
 
-<img src="./screenshots/Supabase_Dashboard.png" height="30%">
-![plot](./screenshots/Chat_Option.png)
+<img src="./screenshots/Chat_Option.png" height="30%">
 
 ## How to get this app working for you
 
