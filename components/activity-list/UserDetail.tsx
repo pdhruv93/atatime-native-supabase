@@ -13,6 +13,9 @@ import * as Linking from "expo-linking";
 import { UserAvatar } from "./UserAvatar";
 import { Alert, AlertIcon, AlertText } from "@/components/ui/alert";
 import { InfoIcon } from "@/components/ui/icon";
+import { ScrollView } from "react-native";
+import { Text } from "@/components/ui/text";
+import { HStack } from "../ui/hstack";
 
 interface UserDetailProps {
   selectedActivity: ActivityWithUserDetails | null;
@@ -29,58 +32,63 @@ export function UserDetail({ selectedActivity, onClose }: UserDetailProps) {
           <ActionsheetDragIndicator />
         </ActionsheetDragIndicatorWrapper>
 
-        <VStack
-          space="lg"
-          className="p-4 h-1/2 items-center w-full justify-between"
-        >
-          <VStack space="md" className="items-center w-full ">
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <VStack
+            space="lg"
+            className="p-4 h-1/2 items-center w-full justify-between"
+          >
             <UserAvatar
               userName={selectedActivity?.user_display_name}
               fileName={selectedActivity?.profile_picture}
             />
 
-            <Heading size="2xl">{selectedActivity?.user_display_name}</Heading>
+            <VStack className="items-center">
+              <Heading size="2xl">
+                {selectedActivity?.user_display_name}
+              </Heading>
 
-            {selectedActivity?.location_name ? (
-              <>
-                <Heading size="xl">{selectedActivity?.location_name}</Heading>
+              {selectedActivity?.user_age ? (
+                <Heading size="lg">{`${selectedActivity?.user_age} years`}</Heading>
+              ) : null}
 
-                {selectedActivity?.distance ? (
-                  <Heading size="sm">{selectedActivity?.distance}</Heading>
-                ) : null}
-              </>
-            ) : null}
-
-            {selectedActivity?.user_age ? (
-              <Heading size="lg">{`${selectedActivity?.user_age} years`}</Heading>
-            ) : null}
+              {selectedActivity?.location_name ? (
+                <HStack>
+                  <Heading size="lg">
+                    {selectedActivity?.location_name}{" "}
+                    {selectedActivity.distance
+                      ? ` ,${selectedActivity.distance} km away`
+                      : null}
+                  </Heading>
+                </HStack>
+              ) : null}
+            </VStack>
 
             {selectedActivity?.user_bio ? (
-              <Heading size="2xl">{selectedActivity?.user_bio}</Heading>
+              <Text>{selectedActivity?.user_bio}</Text>
+            ) : null}
+
+            <Alert action="warning" variant="solid">
+              <AlertIcon as={InfoIcon} />
+              <AlertText>
+                Follow your conscience. Do not share any personal or financial
+                details over chat
+              </AlertText>
+            </Alert>
+
+            {selectedActivity?.user_email ? (
+              <Button
+                size="xl"
+                variant="outline"
+                className="w-full"
+                onPress={() =>
+                  Linking.openURL(`mailto:${selectedActivity.user_email}`)
+                }
+              >
+                <ButtonText>Contact</ButtonText>
+              </Button>
             ) : null}
           </VStack>
-
-          <Alert action="warning" variant="solid">
-            <AlertIcon as={InfoIcon} />
-            <AlertText>
-              Follow your conscience. Do not share any personal or financial
-              details over chat
-            </AlertText>
-          </Alert>
-
-          {selectedActivity?.user_email ? (
-            <Button
-              size="xl"
-              variant="outline"
-              className="w-full"
-              onPress={() =>
-                Linking.openURL(`mailto:${selectedActivity.user_email}`)
-              }
-            >
-              <ButtonText>Contact</ButtonText>
-            </Button>
-          ) : null}
-        </VStack>
+        </ScrollView>
       </ActionsheetContent>
     </Actionsheet>
   );
