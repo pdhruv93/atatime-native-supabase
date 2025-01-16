@@ -19,8 +19,8 @@ export function useActivityList() {
       setIsLoading(true);
       const { data, error } = await supabase.rpc("get_activities", {
         logged_in_user_id: user?.user_id,
-        activity_name: typedActivity,
-        base_location: user?.location,
+        search_activity_text: typedActivity ?? "",
+        base_location: user?.location?.toString() ?? null,
       });
 
       if (error) {
