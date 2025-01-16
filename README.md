@@ -29,7 +29,7 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 ### Supabase Dashboard
 
-<img src="./screenshots/Supabase_Dashboard.png" height="30%">
+<img src="./screenshots/Supabase_Dashboard.png" title="Supabase Dashboard" height="30%">
 
 ### Onboarding screen
 
@@ -67,13 +67,15 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 The app is not published to any store yet and has to be complied and run locally
 
-1. Install dependencies
+1. Ask Developer about the Supabase configs, put it in a .env file
+
+2. Install dependencies
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. Start the app
 
    ```bash
     npx expo start
