@@ -27,7 +27,7 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 # Onboarding screen
 
-![plot](./screenshots/Onboarding_Screen.png)
+![|10](./screenshots/Onboarding_Screen.png)
 
 # Signup screen
 
