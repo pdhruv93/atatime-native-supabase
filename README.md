@@ -31,37 +31,13 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 <img src="./screenshots/Supabase_Dashboard.png" title="Supabase Dashboard" height="30%">
 
-### Onboarding screen
+### App Screenshots
 
-<img src="./screenshots/Onboarding_Screen.png" height="500">
+<img src="./screenshots/Onboarding_Screen.png" title="Onboarding screen" height="500"> <img src="./screenshots/Signup_Screen.png" title="Signup screen" height="500"> <img src="./screenshots/Home_Screen.png" title="Home Screen" height="500"> <img src="./screenshots/Profile_Screen.png" title="Profile Screen" height="500"> <img src="./screenshots/Activity_Create_Screen.png" title="Activity Create Screen" height="500"> <img src="./screenshots/Zod_Validations.png" title="Zod Validations" height="500"> <img src="./screenshots/Chat_Option.png" title="Chat Option" height="500">
 
-### Signup screen
+### Magic Link Email
 
-<img src="./screenshots/Signup_Screen.png" height="500">
-
-### Magic Link on mail
-
-<img src="./screenshots/Magic_Link_on_mail.png" height="500">
-
-### Home Screen
-
-<img src="./screenshots/Home_Screen.png" height="500">
-
-### Profile Screen
-
-<img src="./screenshots/Profile_Screen.png" height="500">
-
-### Activity Create Screen
-
-<img src="./screenshots/Activity_Create_Screen.png" height="500">
-
-### Zod Validations
-
-<img src="./screenshots/Zod_Validations.png" height="500">
-
-### Chat Option
-
-<img src="./screenshots/Chat_Option.png" height="500">
+<img src="./screenshots/Magic_Link_on_mail.png" title="Magic Link on mail" height="500">
 
 ## How to get this app working for you
 
