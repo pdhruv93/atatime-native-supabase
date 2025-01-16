@@ -19,11 +19,17 @@ One workaround was to get the device's phone number automatically and use it as 
 
 Thats why the initial version only supports email based auth and chats. But the approach for generating Magic Links/OTP remains same and in future might be extended to other social media logins.
 
+## Tech Stack used
+
+- **Frontend:** Expo+React-Natie wih and TypeScipt, [GlueStack UI](https://gluestack.io/)
+- **Backend:** [Supabase](https://supabase.com/) with Postgres(DB functions, Triggers)
+- **Other:** Zustand for Global state mgmnt, React Hook Form+Zod
+
 ## Screenshots
 
 # Supabase Dashboard
 
-<img src="./screenshots/Supabase_Dashboard.png" height="150">
+<img src="./screenshots/Supabase_Dashboard.png" height="30%">
 
 # Onboarding screen
 
