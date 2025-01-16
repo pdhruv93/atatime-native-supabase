@@ -23,39 +23,39 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 # Supabase Dashboard
 
-![plot](./screenshots/Supabase Dashboard.png)
+![plot](./screenshots/Supabase_Dashboard.png)
 
 # Onboarding screen
 
-![plot](./screenshots/Onboarding screen.png)
+![plot](./screenshots/Onboarding_Screen.png)
 
 # Signup screen
 
-![plot](./screenshots/Signup screen.png)
+![plot](./screenshots/Signup_Screen.png)
 
 # Magic Link on mail
 
-![plot](./screenshots/Magic Link on mail.png)
+![plot](./screenshots/Magic_Link_on_mail.png)
 
 # Home Screen
 
-![plot](./screenshots/Home Screen.png)
+![plot](./screenshots/Home_Screen.png)
 
 # Profile Screen
 
-![plot](./screenshots/Profile Screen.png)
+![plot](./screenshots/Profile_Screen.png)
 
 # Activity Create Screen
 
-![plot](./screenshots/Activity Create Screen.png)
+![plot](./screenshots/Activity_Create_Screen.png)
 
 # Zod Validations
 
-![plot](./screenshots/Zod Validations.png)
+![plot](./screenshots/Zod_Validations.png)
 
-# Chat Option 13.35.02
+# Chat Option
 
-![plot](./screenshots/Chat Option.png)
+![plot](./screenshots/Chat_Option.png)
 
 ## How to get this app working for you
 
