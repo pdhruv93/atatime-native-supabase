@@ -23,7 +23,7 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 # Supabase Dashboard
 
-<img src="./screenshots/Supabase_Dashboard.png" width="20" height="20">
+<img src="./screenshots/Supabase_Dashboard.png" height="100">
 
 # Onboarding screen
 
