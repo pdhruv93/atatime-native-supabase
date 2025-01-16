@@ -8,6 +8,8 @@ import {
   FormControlError,
   FormControlErrorText,
   FormControlErrorIcon,
+  FormControlLabel,
+  FormControlLabelText,
 } from "@/components/ui/form-control";
 import { AlertCircleIcon } from "@/components/ui/icon";
 import { Controller } from "react-hook-form";
@@ -16,12 +18,16 @@ export function BasicProfileForm() {
   const { errors, handleSubmit, onFormSubmit, control } = useBasicProfile();
 
   return (
-    <VStack space="lg" className="w-full">
+    <VStack space="xl" className="w-full">
       <Controller
         control={control}
         name="displayName"
         render={({ field: { onChange, onBlur, value } }) => (
           <FormControl isInvalid={!!errors.displayName}>
+            <FormControlLabel>
+              <FormControlLabelText>Display name</FormControlLabelText>
+            </FormControlLabel>
+
             <Input size="xl" isInvalid={!!errors.displayName}>
               <InputField
                 placeholder="Your Name"
@@ -47,6 +53,10 @@ export function BasicProfileForm() {
         name="age"
         render={({ field: { onChange, onBlur, value } }) => (
           <FormControl isInvalid={!!errors.age}>
+            <FormControlLabel>
+              <FormControlLabelText>Age</FormControlLabelText>
+            </FormControlLabel>
+
             <Input size="xl" isInvalid={!!errors.age}>
               <InputField
                 placeholder="Your Age"
@@ -72,6 +82,10 @@ export function BasicProfileForm() {
         name="bio"
         render={({ field: { onChange, onBlur, value } }) => (
           <FormControl isInvalid={!!errors.bio}>
+            <FormControlLabel>
+              <FormControlLabelText>Bio</FormControlLabelText>
+            </FormControlLabel>
+
             <Textarea size="xl" isInvalid={!!errors.bio}>
               <TextareaInput
                 placeholder="Let people know you"

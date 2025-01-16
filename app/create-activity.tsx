@@ -1,4 +1,4 @@
-import { ActivityForm } from "@/components/activity-creator";
+import { ActivityCreatorForm } from "@/components/activity-creator";
 import { Button, ButtonIcon } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { ChevronsLeftIcon } from "@/components/ui/icon";
@@ -18,7 +18,7 @@ export default function CreateActivity() {
       </Button>
 
       <Heading size="2xl">Start typing your activity</Heading>
-      <ActivityForm />
+      <ActivityCreatorForm />
     </VStack>
   );
 }

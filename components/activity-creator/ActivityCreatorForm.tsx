@@ -8,20 +8,26 @@ import {
   FormControlError,
   FormControlErrorText,
   FormControlErrorIcon,
+  FormControlLabel,
+  FormControlLabelText,
 } from "@/components/ui/form-control";
 import { AlertCircleIcon } from "@/components/ui/icon";
 import { Controller } from "react-hook-form";
 
-export function ActivityForm() {
+export function ActivityCreatorForm() {
   const { errors, handleSubmit, onFormSubmit, control } = useActivityCreator();
 
   return (
-    <VStack space="lg" className="w-full">
+    <VStack space="xl" className="w-full">
       <Controller
         control={control}
         name="name"
         render={({ field: { onChange, onBlur, value } }) => (
           <FormControl isInvalid={!!errors.name}>
+            <FormControlLabel>
+              <FormControlLabelText>activity</FormControlLabelText>
+            </FormControlLabel>
+
             <Input size="xl" isInvalid={!!errors.name}>
               <InputField
                 placeholder="what are you doing? i'm"
@@ -47,6 +53,12 @@ export function ActivityForm() {
         name="description"
         render={({ field: { onChange, onBlur, value } }) => (
           <FormControl isInvalid={!!errors.description}>
+            <FormControlLabel>
+              <FormControlLabelText>
+                Describe this activity
+              </FormControlLabelText>
+            </FormControlLabel>
+
             <Textarea size="xl" isInvalid={!!errors.description}>
               <TextareaInput
                 placeholder="more about this activity. this is optional :)"
@@ -61,6 +73,35 @@ export function ActivityForm() {
 
               <FormControlErrorText>
                 {errors.description && errors.description.message}
+              </FormControlErrorText>
+            </FormControlError>
+          </FormControl>
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="visibleFor"
+        render={({ field: { onChange, onBlur, value } }) => (
+          <FormControl isInvalid={!!errors.visibleFor}>
+            <FormControlLabel>
+              <FormControlLabelText>Visible for(1-7) days</FormControlLabelText>
+            </FormControlLabel>
+
+            <Input size="xl" isInvalid={!!errors.visibleFor}>
+              <InputField
+                placeholder="Visible for(1-7) days"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value?.toString()}
+              />
+            </Input>
+
+            <FormControlError>
+              <FormControlErrorIcon as={AlertCircleIcon} />
+
+              <FormControlErrorText>
+                {errors.visibleFor && errors.visibleFor.message}
               </FormControlErrorText>
             </FormControlError>
           </FormControl>

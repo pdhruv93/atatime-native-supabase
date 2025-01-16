@@ -7,6 +7,7 @@ import { useShowToast } from "@/hooks/useShowToast";
 import { useUtilityStore } from "@/store/UtilityStore";
 import { useShallow } from "zustand/react/shallow";
 import { router } from "expo-router";
+import moment from "moment";
 
 export function useActivityCreator() {
   const { generateToast } = useShowToast();
@@ -25,6 +26,7 @@ export function useActivityCreator() {
     defaultValues: {
       name: "",
       description: "",
+      visibleFor: 3,
     },
   });
 
@@ -39,6 +41,7 @@ export function useActivityCreator() {
       created_by: user.user_id,
       name: data.name,
       description: data.description,
+      visible_until: moment().add(data.visibleFor, "days").format(),
     });
 
     if (error) {

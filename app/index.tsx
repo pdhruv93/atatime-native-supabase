@@ -21,7 +21,7 @@ export default function App() {
     updateUserProfileLocally(null);
     setIsLoading(false);
     SplashScreen.hideAsync();
-    router.replace("/sign-up");
+    router.replace("/onboarding");
   };
 
   const getUserProfileData = async (userId: string) => {

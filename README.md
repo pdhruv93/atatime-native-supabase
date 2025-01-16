@@ -1,4 +1,4 @@
-# atatime Expo app
+# atatime(@@time) Expo app
 
 This app has been created using Expo and [Supabase](https://supabase.com/). Supabase is a backend as a service.
 
