@@ -9,7 +9,7 @@ import { ActivityList } from "@/components/activity-list";
 
 export default function Home() {
   return (
-    <VStack space="4xl" className="h-full bg-black">
+    <VStack space="4xl" className="h-full dark:bg-black">
       <HStack className="w-full justify-between items-center">
         <Heading size="2xl">@@time</Heading>
 
