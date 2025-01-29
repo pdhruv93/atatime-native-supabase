@@ -45,6 +45,10 @@ Thats why the initial version only supports email based auth and chats. But the 
 
 <img src="./screenshots/Magic_Link_on_mail.png" title="Magic Link on mail" height="500">
 
+### Postgis Country Details
+
+https://github.com/adityatoshniwal/postgis-sample-dataset/blob/main/countries.sql#L274
+
 ## How to get this app working for you
 
 The app is not published to any store yet and has to be complied and run locally
