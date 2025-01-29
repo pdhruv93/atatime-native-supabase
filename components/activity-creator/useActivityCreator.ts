@@ -50,7 +50,7 @@ export function useActivityCreator() {
       return;
     }
 
-    generateToast("activity-create", "success", "Profile Updated");
+    generateToast("activity-create", "success", "Activity Created");
     setTypedActivity(data.name);
     setIsLoading(false);
     router.replace("/home");
