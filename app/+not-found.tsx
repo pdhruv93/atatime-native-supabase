@@ -6,7 +6,7 @@ import { router } from "expo-router";
 
 export default function NotFoundScreen() {
   return (
-    <Center className="bg-black h-full">
+    <Center className="dark:bg-black h-full">
       <VStack space="4xl" className="w-full h-full justify-center">
         <VStack space="md">
           <Heading size="4xl">@@time</Heading>

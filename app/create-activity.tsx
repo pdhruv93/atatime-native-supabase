@@ -7,7 +7,7 @@ import { router } from "expo-router";
 
 export default function CreateActivity() {
   return (
-    <VStack space="xl" className="h-full bg-black">
+    <VStack space="xl" className="h-full dark:bg-black">
       <Button
         size="lg"
         className="rounded-full p-3.5 self-start"

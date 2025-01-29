@@ -9,6 +9,7 @@ import { UserAvatar } from "./UserAvatar";
 import { Text } from "@/components/ui/text";
 import moment from "moment";
 import { HStack } from "@/components/ui/hstack";
+import { EmptyList } from "./EmptyList";
 
 export function ActivityList() {
   const {
@@ -17,6 +18,10 @@ export function ActivityList() {
     openUserDetailsForActivity,
     closeUserDetails,
   } = useActivityList();
+
+  if (!similarActivities.length) {
+    return <EmptyList />;
+  }
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>

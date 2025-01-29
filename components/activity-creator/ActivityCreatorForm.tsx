@@ -114,7 +114,7 @@ export function ActivityCreatorForm() {
         action="primary"
         onPress={handleSubmit(onFormSubmit)}
       >
-        <ButtonText>Update</ButtonText>
+        <ButtonText>Let's do it!</ButtonText>
       </Button>
     </VStack>
   );

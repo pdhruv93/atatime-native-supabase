@@ -54,9 +54,9 @@ export function UserDetail({ selectedActivity, onClose }: UserDetailProps) {
               {selectedActivity?.location_name ? (
                 <HStack>
                   <Heading size="lg">
-                    {selectedActivity?.location_name}{" "}
+                    {selectedActivity?.location_name}
                     {selectedActivity.distance
-                      ? ` ,${selectedActivity.distance} km away`
+                      ? `, ${selectedActivity.distance / 1000} km away`
                       : null}
                   </Heading>
                 </HStack>
